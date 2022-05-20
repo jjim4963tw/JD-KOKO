@@ -108,13 +108,11 @@
 				38304BD228376B5A008D8DF5 /* AppDelegate.m */,
 				38304BD428376B5A008D8DF5 /* SceneDelegate.h */,
 				38304BD528376B5A008D8DF5 /* SceneDelegate.m */,
-				38304BD728376B5A008D8DF5 /* ViewController.h */,
-				38304BD828376B5A008D8DF5 /* ViewController.m */,
-				38304BDA28376B5A008D8DF5 /* Main.storyboard */,
-				38304BDD28376B5B008D8DF5 /* Assets.xcassets */,
-				38304BDF28376B5B008D8DF5 /* LaunchScreen.storyboard */,
-				38304BE228376B5B008D8DF5 /* Info.plist */,
 				38304BE328376B5B008D8DF5 /* main.m */,
+				38304BDD28376B5B008D8DF5 /* Assets.xcassets */,
+				38304C0828376BFF008D8DF5 /* Layout */,
+				38304C0628376BDF008D8DF5 /* View */,
+				38304C0728376BEA008D8DF5 /* Resource */,
 			);
 			path = KOKO_APP;
 			sourceTree = "<group>";
@@ -134,6 +132,32 @@
 				38304BF928376B5B008D8DF5 /* KOKO_APPUITestsLaunchTests.m */,
 			);
 			path = KOKO_APPUITests;
+			sourceTree = "<group>";
+		};
+		38304C0628376BDF008D8DF5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				38304BD728376B5A008D8DF5 /* ViewController.h */,
+				38304BD828376B5A008D8DF5 /* ViewController.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		38304C0728376BEA008D8DF5 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				38304BE228376B5B008D8DF5 /* Info.plist */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		38304C0828376BFF008D8DF5 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				38304BDA28376B5A008D8DF5 /* Main.storyboard */,
+				38304BDF28376B5B008D8DF5 /* LaunchScreen.storyboard */,
+			);
+			path = Layout;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
