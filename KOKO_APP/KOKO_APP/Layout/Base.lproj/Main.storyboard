@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WbK-sH-OkF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TMU-VX-uVP">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -8,28 +8,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Base View Controller-->
-        <scene sceneID="x5J-3t-mSU">
-            <objects>
-                <tabBarController id="WbK-sH-OkF" customClass="BaseViewController" customModule="KOKO_APP" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="ADj-na-AgX"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="obX-Zp-i80">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="Wng-GS-wPu" kind="relationship" relationship="viewControllers" id="51r-vd-iD2"/>
-                        <segue destination="SdP-bG-J1A" kind="relationship" relationship="viewControllers" id="YFg-Gj-ON5"/>
-                        <segue destination="fhq-jB-frZ" kind="relationship" relationship="viewControllers" id="qGK-TV-SdE"/>
-                        <segue destination="hdp-wU-wKY" kind="relationship" relationship="viewControllers" id="lRW-Y3-g7K"/>
-                        <segue destination="5zA-A4-8bt" kind="relationship" relationship="viewControllers" id="600-GM-hAU"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WRD-Gh-LDp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-5622" y="-1195"/>
-        </scene>
         <!--Money-->
         <scene sceneID="Yh5-95-omB">
             <objects>
@@ -93,7 +71,9 @@
                         <viewLayoutGuide key="safeArea" id="wOi-zZ-0fL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" id="McO-ur-cRK"/>
+                    <tabBarItem key="tabBarItem" title="" image="icon_tab_koko" selectedImage="icon_tab_koko" id="McO-ur-cRK">
+                        <inset key="imageInsets" minX="0.0" minY="-10" maxX="0.0" maxY="0.0"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" id="6WQ-Ui-AJ2"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
@@ -205,10 +185,31 @@
             </objects>
             <point key="canvasLocation" x="-4643" y="-1195"/>
         </scene>
+        <!--Base View Controller-->
+        <scene sceneID="8fF-Av-aqy">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PgB-yu-h8O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tabBarController id="TMU-VX-uVP" customClass="BaseViewController" customModule="KOKO_APP" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oFj-aX-hne">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Wng-GS-wPu" kind="relationship" relationship="viewControllers" id="aOu-dA-V8n"/>
+                        <segue destination="SdP-bG-J1A" kind="relationship" relationship="viewControllers" id="84n-VR-zxe"/>
+                        <segue destination="fhq-jB-frZ" kind="relationship" relationship="viewControllers" id="sQz-YE-8sg"/>
+                        <segue destination="hdp-wU-wKY" kind="relationship" relationship="viewControllers" id="TLW-DW-yFd"/>
+                        <segue destination="5zA-A4-8bt" kind="relationship" relationship="viewControllers" id="sbs-uo-IyW"/>
+                    </connections>
+                </tabBarController>
+            </objects>
+            <point key="canvasLocation" x="-5725" y="-1195"/>
+        </scene>
     </scenes>
     <resources>
         <image name="icon_tab_accounts" width="28" height="46"/>
         <image name="icon_tab_friends" width="28" height="46"/>
+        <image name="icon_tab_koko" width="85" height="68"/>
         <image name="icon_tab_money" width="28" height="46"/>
         <image name="icon_tab_settings" width="28" height="46"/>
         <systemColor name="systemBackgroundColor">
