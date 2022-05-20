@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		38304BD328376B5A008D8DF5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 38304BD228376B5A008D8DF5 /* AppDelegate.m */; };
 		38304BD628376B5A008D8DF5 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 38304BD528376B5A008D8DF5 /* SceneDelegate.m */; };
-		38304BD928376B5A008D8DF5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38304BD828376B5A008D8DF5 /* ViewController.m */; };
+		38304BD928376B5A008D8DF5 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38304BD828376B5A008D8DF5 /* BaseViewController.m */; };
 		38304BDC28376B5A008D8DF5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38304BDA28376B5A008D8DF5 /* Main.storyboard */; };
 		38304BDE28376B5B008D8DF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38304BDD28376B5B008D8DF5 /* Assets.xcassets */; };
 		38304BE128376B5B008D8DF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38304BDF28376B5B008D8DF5 /* LaunchScreen.storyboard */; };
@@ -17,6 +17,23 @@
 		38304BEE28376B5B008D8DF5 /* KOKO_APPTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 38304BED28376B5B008D8DF5 /* KOKO_APPTests.m */; };
 		38304BF828376B5B008D8DF5 /* KOKO_APPUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 38304BF728376B5B008D8DF5 /* KOKO_APPUITests.m */; };
 		38304BFA28376B5B008D8DF5 /* KOKO_APPUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 38304BF928376B5B008D8DF5 /* KOKO_APPUITestsLaunchTests.m */; };
+		38B324822837889400597D12 /* MoneyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B324812837889400597D12 /* MoneyViewController.m */; };
+		38B3248528378A0D00597D12 /* FriendListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B3248428378A0D00597D12 /* FriendListViewController.m */; };
+		38B3248828378A2900597D12 /* KOKOIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B3248728378A2900597D12 /* KOKOIndexViewController.m */; };
+		38B3248B28378A3A00597D12 /* AccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B3248A28378A3A00597D12 /* AccountsViewController.m */; };
+		38B3248E28378A4C00597D12 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B3248D28378A4C00597D12 /* SettingsViewController.m */; };
+		38B3249C28378B8E00597D12 /* icon_tab_settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 38B3249028378B8E00597D12 /* icon_tab_settings.png */; };
+		38B3249D28378B8E00597D12 /* icon_tab_money@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 38B3249128378B8E00597D12 /* icon_tab_money@3x.png */; };
+		38B3249E28378B8E00597D12 /* icon_tab_friend@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 38B3249228378B8E00597D12 /* icon_tab_friend@2x.png */; };
+		38B3249F28378B8E00597D12 /* icon_tab_friend@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 38B3249328378B8E00597D12 /* icon_tab_friend@3x.png */; };
+		38B324A028378B8E00597D12 /* icon_tab_friend.png in Resources */ = {isa = PBXBuildFile; fileRef = 38B3249428378B8E00597D12 /* icon_tab_friend.png */; };
+		38B324A128378B8E00597D12 /* icon_tab_accounts.png in Resources */ = {isa = PBXBuildFile; fileRef = 38B3249528378B8E00597D12 /* icon_tab_accounts.png */; };
+		38B324A228378B8E00597D12 /* icon_tab_accounts@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 38B3249628378B8E00597D12 /* icon_tab_accounts@3x.png */; };
+		38B324A328378B8E00597D12 /* icon_tab_money@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 38B3249728378B8E00597D12 /* icon_tab_money@2x.png */; };
+		38B324A428378B8E00597D12 /* icon_tab_accounts@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 38B3249828378B8E00597D12 /* icon_tab_accounts@2x.png */; };
+		38B324A528378B8E00597D12 /* icon_tab_settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 38B3249928378B8E00597D12 /* icon_tab_settings@2x.png */; };
+		38B324A628378B8E00597D12 /* icon_tab_money.png in Resources */ = {isa = PBXBuildFile; fileRef = 38B3249A28378B8E00597D12 /* icon_tab_money.png */; };
+		38B324A728378B8E00597D12 /* icon_tab_settings@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 38B3249B28378B8E00597D12 /* icon_tab_settings@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,8 +59,8 @@
 		38304BD228376B5A008D8DF5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		38304BD428376B5A008D8DF5 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		38304BD528376B5A008D8DF5 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		38304BD728376B5A008D8DF5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		38304BD828376B5A008D8DF5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		38304BD728376B5A008D8DF5 /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		38304BD828376B5A008D8DF5 /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		38304BDB28376B5A008D8DF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		38304BDD28376B5B008D8DF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		38304BE028376B5B008D8DF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,6 +71,28 @@
 		38304BF328376B5B008D8DF5 /* KOKO_APPUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KOKO_APPUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		38304BF728376B5B008D8DF5 /* KOKO_APPUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KOKO_APPUITests.m; sourceTree = "<group>"; };
 		38304BF928376B5B008D8DF5 /* KOKO_APPUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KOKO_APPUITestsLaunchTests.m; sourceTree = "<group>"; };
+		38B324802837889400597D12 /* MoneyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoneyViewController.h; sourceTree = "<group>"; };
+		38B324812837889400597D12 /* MoneyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoneyViewController.m; sourceTree = "<group>"; };
+		38B3248328378A0D00597D12 /* FriendListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendListViewController.h; sourceTree = "<group>"; };
+		38B3248428378A0D00597D12 /* FriendListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendListViewController.m; sourceTree = "<group>"; };
+		38B3248628378A2900597D12 /* KOKOIndexViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KOKOIndexViewController.h; sourceTree = "<group>"; };
+		38B3248728378A2900597D12 /* KOKOIndexViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KOKOIndexViewController.m; sourceTree = "<group>"; };
+		38B3248928378A3A00597D12 /* AccountsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountsViewController.h; sourceTree = "<group>"; };
+		38B3248A28378A3A00597D12 /* AccountsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountsViewController.m; sourceTree = "<group>"; };
+		38B3248C28378A4C00597D12 /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		38B3248D28378A4C00597D12 /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		38B3249028378B8E00597D12 /* icon_tab_settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_tab_settings.png; sourceTree = "<group>"; };
+		38B3249128378B8E00597D12 /* icon_tab_money@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_tab_money@3x.png"; sourceTree = "<group>"; };
+		38B3249228378B8E00597D12 /* icon_tab_friend@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_tab_friend@2x.png"; sourceTree = "<group>"; };
+		38B3249328378B8E00597D12 /* icon_tab_friend@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_tab_friend@3x.png"; sourceTree = "<group>"; };
+		38B3249428378B8E00597D12 /* icon_tab_friend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_tab_friend.png; sourceTree = "<group>"; };
+		38B3249528378B8E00597D12 /* icon_tab_accounts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_tab_accounts.png; sourceTree = "<group>"; };
+		38B3249628378B8E00597D12 /* icon_tab_accounts@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_tab_accounts@3x.png"; sourceTree = "<group>"; };
+		38B3249728378B8E00597D12 /* icon_tab_money@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_tab_money@2x.png"; sourceTree = "<group>"; };
+		38B3249828378B8E00597D12 /* icon_tab_accounts@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_tab_accounts@2x.png"; sourceTree = "<group>"; };
+		38B3249928378B8E00597D12 /* icon_tab_settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_tab_settings@2x.png"; sourceTree = "<group>"; };
+		38B3249A28378B8E00597D12 /* icon_tab_money.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_tab_money.png; sourceTree = "<group>"; };
+		38B3249B28378B8E00597D12 /* icon_tab_settings@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_tab_settings@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,8 +176,18 @@
 		38304C0628376BDF008D8DF5 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				38304BD728376B5A008D8DF5 /* ViewController.h */,
-				38304BD828376B5A008D8DF5 /* ViewController.m */,
+				38304BD728376B5A008D8DF5 /* BaseViewController.h */,
+				38304BD828376B5A008D8DF5 /* BaseViewController.m */,
+				38B324802837889400597D12 /* MoneyViewController.h */,
+				38B324812837889400597D12 /* MoneyViewController.m */,
+				38B3248328378A0D00597D12 /* FriendListViewController.h */,
+				38B3248428378A0D00597D12 /* FriendListViewController.m */,
+				38B3248628378A2900597D12 /* KOKOIndexViewController.h */,
+				38B3248728378A2900597D12 /* KOKOIndexViewController.m */,
+				38B3248928378A3A00597D12 /* AccountsViewController.h */,
+				38B3248A28378A3A00597D12 /* AccountsViewController.m */,
+				38B3248C28378A4C00597D12 /* SettingsViewController.h */,
+				38B3248D28378A4C00597D12 /* SettingsViewController.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -146,6 +195,7 @@
 		38304C0728376BEA008D8DF5 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				38B3248F28378B7E00597D12 /* Images */,
 				38304BE228376B5B008D8DF5 /* Info.plist */,
 			);
 			path = Resource;
@@ -158,6 +208,25 @@
 				38304BDF28376B5B008D8DF5 /* LaunchScreen.storyboard */,
 			);
 			path = Layout;
+			sourceTree = "<group>";
+		};
+		38B3248F28378B7E00597D12 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				38B3249528378B8E00597D12 /* icon_tab_accounts.png */,
+				38B3249828378B8E00597D12 /* icon_tab_accounts@2x.png */,
+				38B3249628378B8E00597D12 /* icon_tab_accounts@3x.png */,
+				38B3249428378B8E00597D12 /* icon_tab_friend.png */,
+				38B3249228378B8E00597D12 /* icon_tab_friend@2x.png */,
+				38B3249328378B8E00597D12 /* icon_tab_friend@3x.png */,
+				38B3249A28378B8E00597D12 /* icon_tab_money.png */,
+				38B3249728378B8E00597D12 /* icon_tab_money@2x.png */,
+				38B3249128378B8E00597D12 /* icon_tab_money@3x.png */,
+				38B3249028378B8E00597D12 /* icon_tab_settings.png */,
+				38B3249928378B8E00597D12 /* icon_tab_settings@2x.png */,
+				38B3249B28378B8E00597D12 /* icon_tab_settings@3x.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,7 +334,19 @@
 			files = (
 				38304BE128376B5B008D8DF5 /* LaunchScreen.storyboard in Resources */,
 				38304BDE28376B5B008D8DF5 /* Assets.xcassets in Resources */,
+				38B324A528378B8E00597D12 /* icon_tab_settings@2x.png in Resources */,
+				38B324A728378B8E00597D12 /* icon_tab_settings@3x.png in Resources */,
 				38304BDC28376B5A008D8DF5 /* Main.storyboard in Resources */,
+				38B3249C28378B8E00597D12 /* icon_tab_settings.png in Resources */,
+				38B324A228378B8E00597D12 /* icon_tab_accounts@3x.png in Resources */,
+				38B324A028378B8E00597D12 /* icon_tab_friend.png in Resources */,
+				38B324A628378B8E00597D12 /* icon_tab_money.png in Resources */,
+				38B324A128378B8E00597D12 /* icon_tab_accounts.png in Resources */,
+				38B324A428378B8E00597D12 /* icon_tab_accounts@2x.png in Resources */,
+				38B324A328378B8E00597D12 /* icon_tab_money@2x.png in Resources */,
+				38B3249F28378B8E00597D12 /* icon_tab_friend@3x.png in Resources */,
+				38B3249D28378B8E00597D12 /* icon_tab_money@3x.png in Resources */,
+				38B3249E28378B8E00597D12 /* icon_tab_friend@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,10 +371,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38304BD928376B5A008D8DF5 /* ViewController.m in Sources */,
+				38B3248528378A0D00597D12 /* FriendListViewController.m in Sources */,
+				38304BD928376B5A008D8DF5 /* BaseViewController.m in Sources */,
+				38B3248B28378A3A00597D12 /* AccountsViewController.m in Sources */,
+				38B3248E28378A4C00597D12 /* SettingsViewController.m in Sources */,
+				38B324822837889400597D12 /* MoneyViewController.m in Sources */,
 				38304BD328376B5A008D8DF5 /* AppDelegate.m in Sources */,
 				38304BE428376B5B008D8DF5 /* main.m in Sources */,
 				38304BD628376B5A008D8DF5 /* SceneDelegate.m in Sources */,
+				38B3248828378A2900597D12 /* KOKOIndexViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,7 +554,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = C7ZY9GQL2C;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = KOKO_APP/Info.plist;
+				INFOPLIST_FILE = KOKO_APP/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -495,7 +581,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = C7ZY9GQL2C;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = KOKO_APP/Info.plist;
+				INFOPLIST_FILE = KOKO_APP/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

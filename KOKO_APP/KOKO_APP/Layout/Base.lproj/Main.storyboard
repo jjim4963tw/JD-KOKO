@@ -1,24 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WbK-sH-OkF">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Base View Controller-->
+        <scene sceneID="x5J-3t-mSU">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tabBarController id="WbK-sH-OkF" customClass="BaseViewController" customModule="KOKO_APP" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ADj-na-AgX"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="obX-Zp-i80">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="581-Qn-jUB" kind="relationship" relationship="viewControllers" id="N6N-1g-sh7"/>
+                        <segue destination="aFo-C8-cei" kind="relationship" relationship="viewControllers" id="xCd-Mh-3dX"/>
+                        <segue destination="Hus-37-Jqr" kind="relationship" relationship="viewControllers" id="sAK-gc-iNV"/>
+                        <segue destination="XDI-RU-8Yb" kind="relationship" relationship="viewControllers" id="h4Y-He-9P5"/>
+                        <segue destination="8p1-ta-luD" kind="relationship" relationship="viewControllers" id="MgA-Oc-HCG"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WRD-Gh-LDp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-2419" y="-1143"/>
+        </scene>
+        <!--Money-->
+        <scene sceneID="Yh5-95-omB">
+            <objects>
+                <viewController id="581-Qn-jUB" userLabel="Money" customClass="MoneyViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="f8f-6O-A49">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="r1j-t5-lBt"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="icon_tab_money" id="gaq-FU-sHC"/>
+                    <navigationItem key="navigationItem" id="Hip-mf-RAj"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9St-bo-uMS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1474" y="-1376"/>
+        </scene>
+        <!--Friend-->
+        <scene sceneID="8JW-6O-h2S">
+            <objects>
+                <viewController id="aFo-C8-cei" userLabel="Friend" customClass="FriendListViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="24e-mn-lc6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="DNf-rd-JrZ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="icon_tab_friends" selectedImage="icon_tab_friends" id="svJ-YQ-ft6"/>
+                    <navigationItem key="navigationItem" id="zwu-rU-7Qm"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mj5-jl-g6F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1494" y="-696"/>
+        </scene>
+        <!--Index-->
+        <scene sceneID="uTb-JU-q47">
+            <objects>
+                <viewController id="Hus-37-Jqr" userLabel="Index" customClass="KOKOIndexViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YPB-Qg-STi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="wOi-zZ-0fL"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" id="McO-ur-cRK"/>
+                    <navigationItem key="navigationItem" id="6WQ-Ui-AJ2"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q5l-VY-Upk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2391" y="-460"/>
+        </scene>
+        <!--Accounts-->
+        <scene sceneID="aL1-FU-ZfT">
+            <objects>
+                <viewController id="XDI-RU-8Yb" userLabel="Accounts" customClass="AccountsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JWf-HE-VVv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="y4Z-rD-Vq4"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="icon_tab_accounts" id="TrL-9Y-Hj8"/>
+                    <navigationItem key="navigationItem" id="xDC-xf-jsP"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SpG-Jy-gDo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3345" y="-1464"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="w8Q-U9-3u3">
+            <objects>
+                <viewController id="8p1-ta-luD" userLabel="Settings" customClass="SettingsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oW8-vH-ThE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="luZ-jL-rjj"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="icon_tab_settings" id="mcL-8m-0jA"/>
+                    <navigationItem key="navigationItem" id="f9E-VZ-ngX"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mlc-Qj-BrR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3346" y="-680"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_tab_accounts" width="28" height="46"/>
+        <image name="icon_tab_friends" width="28" height="46"/>
+        <image name="icon_tab_money" width="28" height="46"/>
+        <image name="icon_tab_settings" width="28" height="46"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
