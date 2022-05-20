@@ -6,29 +6,64 @@
 //
 
 #import "FriendListViewController.h"
+#import "APIUtility.h"
+
+#import "NSString+Extend.h"
+
 
 @interface FriendListViewController ()
 
 @end
 
+
+#pragma mark - LifeCycle Function Function
+
 @implementation FriendListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
-    
+    [self initContentView];
     [self initNavigationBar];
+    [self initUserData];
 }
 
 
+#pragma mark - Init Function
+
 - (void)initContentView {
-    
+    self.labelUserName.text = @"User";
+
+    self.imageViewUserAvatar.layer.cornerRadius = self.imageViewUserAvatar.frame.size.width / 2;
+    self.imageViewUserAvatar.layer.masksToBounds = YES;
+
+    [self.btnUserKOKOID setTitle:[NSString localization:@"koko_id_setting"] forState:UIControlStateNormal];
+    [self.btnFriend setTitle:[NSString localization:@"button_friends"] forState:UIControlStateNormal];
+    [self.btnChat setTitle:[NSString localization:@"button_chats"] forState:UIControlStateNormal];
 }
 
 - (void)initNavigationBar {
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
+
+- (void)initUserData {
+    [APIUtility apiConnectionByURL:@"https://dimanyen.github.io/man.json" completion:^(NSMutableDictionary * _Nonnull response, NSError * _Nonnull error) {
+        if (response && response.count > 0) {
+            NSArray *responseArray = [response objectForKey:@"response"];
+            NSString *userName = [[responseArray objectAtIndex:0] objectForKey:@"name"];
+            NSString *kokoID = [[responseArray objectAtIndex:0]  objectForKey:@"kokoid"];
+
+            self.labelUserName.text = userName;
+            
+            if ([kokoID isEmpty]) {
+                [self.btnUserKOKOID setTitle:[NSString localization:@"koko_id_setting"] forState:UIControlStateNormal];
+            } else {
+                [self.btnUserKOKOID setTitle:[NSString stringWithFormat:[NSString localization:@"koko_id_show"], kokoID] forState:UIControlStateNormal];
+            }
+        }
+    }];
+}
+
 
 
 
