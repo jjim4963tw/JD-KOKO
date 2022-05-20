@@ -7,10 +7,16 @@
 
 #import <UIKit/UIKit.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface FriendListViewController : UIViewController
 
-@end
+@property (weak, nonatomic) IBOutlet UILabel *labelUserName;
+@property (weak, nonatomic) IBOutlet UIButton *btnUserKOKOID;
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewUserAvatar;
 
-NS_ASSUME_NONNULL_END
+@property (weak, nonatomic) IBOutlet UITableView *tableViewInvite;
+@property (weak, nonatomic) IBOutlet UITableView *tableViewList;
+
+@property (weak, nonatomic) IBOutlet UIButton *btnFriend;
+@property (weak, nonatomic) IBOutlet UIButton *btnChat;
+
+@end
