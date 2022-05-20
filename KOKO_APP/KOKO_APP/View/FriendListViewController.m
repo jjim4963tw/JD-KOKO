@@ -40,6 +40,11 @@
     [self.btnUserKOKOID setTitle:[NSString localization:@"koko_id_setting"] forState:UIControlStateNormal];
     [self.btnFriend setTitle:[NSString localization:@"button_friends"] forState:UIControlStateNormal];
     [self.btnChat setTitle:[NSString localization:@"button_chats"] forState:UIControlStateNormal];
+    
+    [self.tableViewInvite setHidden:YES];
+    
+    // 當未有好友邀請時，將好友列表上移。
+    self.constraintBtnFriendTop.constant = self.constraintBtnFriendTop.constant - self.tableViewInvite.frame.size.height - 6;
 }
 
 - (void)initNavigationBar {
@@ -63,8 +68,6 @@
         }
     }];
 }
-
-
 
 
 #pragma mark - IBAction Function

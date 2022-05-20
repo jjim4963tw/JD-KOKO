@@ -19,4 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnFriend;
 @property (weak, nonatomic) IBOutlet UIButton *btnChat;
 
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintBtnFriendTop;
+
 @end

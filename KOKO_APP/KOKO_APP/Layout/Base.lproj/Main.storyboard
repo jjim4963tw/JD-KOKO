@@ -188,6 +188,7 @@
                         <outlet property="btnChat" destination="9X3-0c-cka" id="gcj-zI-hRw"/>
                         <outlet property="btnFriend" destination="0em-dz-cQI" id="j51-34-drd"/>
                         <outlet property="btnUserKOKOID" destination="5vC-Zj-FMY" id="t1M-ez-u55"/>
+                        <outlet property="constraintBtnFriendTop" destination="bTB-QP-r4T" id="zfQ-ja-dGm"/>
                         <outlet property="imageViewUserAvatar" destination="RWb-dF-b0O" id="LyT-y0-znA"/>
                         <outlet property="labelUserName" destination="Sim-6D-oVb" id="0bK-M6-FBd"/>
                         <outlet property="tableViewInvite" destination="ePG-pE-tR4" id="2lU-rj-a0z"/>
