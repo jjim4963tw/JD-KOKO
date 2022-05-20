@@ -1,0 +1,602 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		38304BD328376B5A008D8DF5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 38304BD228376B5A008D8DF5 /* AppDelegate.m */; };
+		38304BD628376B5A008D8DF5 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 38304BD528376B5A008D8DF5 /* SceneDelegate.m */; };
+		38304BD928376B5A008D8DF5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38304BD828376B5A008D8DF5 /* ViewController.m */; };
+		38304BDC28376B5A008D8DF5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38304BDA28376B5A008D8DF5 /* Main.storyboard */; };
+		38304BDE28376B5B008D8DF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38304BDD28376B5B008D8DF5 /* Assets.xcassets */; };
+		38304BE128376B5B008D8DF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38304BDF28376B5B008D8DF5 /* LaunchScreen.storyboard */; };
+		38304BE428376B5B008D8DF5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 38304BE328376B5B008D8DF5 /* main.m */; };
+		38304BEE28376B5B008D8DF5 /* KOKO_APPTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 38304BED28376B5B008D8DF5 /* KOKO_APPTests.m */; };
+		38304BF828376B5B008D8DF5 /* KOKO_APPUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 38304BF728376B5B008D8DF5 /* KOKO_APPUITests.m */; };
+		38304BFA28376B5B008D8DF5 /* KOKO_APPUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 38304BF928376B5B008D8DF5 /* KOKO_APPUITestsLaunchTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		38304BEA28376B5B008D8DF5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 38304BC628376B5A008D8DF5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 38304BCD28376B5A008D8DF5;
+			remoteInfo = KOKO_APP;
+		};
+		38304BF428376B5B008D8DF5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 38304BC628376B5A008D8DF5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 38304BCD28376B5A008D8DF5;
+			remoteInfo = KOKO_APP;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		38304BCE28376B5A008D8DF5 /* KOKO_APP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KOKO_APP.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		38304BD128376B5A008D8DF5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		38304BD228376B5A008D8DF5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		38304BD428376B5A008D8DF5 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		38304BD528376B5A008D8DF5 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		38304BD728376B5A008D8DF5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		38304BD828376B5A008D8DF5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		38304BDB28376B5A008D8DF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		38304BDD28376B5B008D8DF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		38304BE028376B5B008D8DF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		38304BE228376B5B008D8DF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		38304BE328376B5B008D8DF5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		38304BE928376B5B008D8DF5 /* KOKO_APPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KOKO_APPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		38304BED28376B5B008D8DF5 /* KOKO_APPTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KOKO_APPTests.m; sourceTree = "<group>"; };
+		38304BF328376B5B008D8DF5 /* KOKO_APPUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KOKO_APPUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		38304BF728376B5B008D8DF5 /* KOKO_APPUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KOKO_APPUITests.m; sourceTree = "<group>"; };
+		38304BF928376B5B008D8DF5 /* KOKO_APPUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KOKO_APPUITestsLaunchTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		38304BCB28376B5A008D8DF5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		38304BE628376B5B008D8DF5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		38304BF028376B5B008D8DF5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		38304BC528376B5A008D8DF5 = {
+			isa = PBXGroup;
+			children = (
+				38304BD028376B5A008D8DF5 /* KOKO_APP */,
+				38304BEC28376B5B008D8DF5 /* KOKO_APPTests */,
+				38304BF628376B5B008D8DF5 /* KOKO_APPUITests */,
+				38304BCF28376B5A008D8DF5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		38304BCF28376B5A008D8DF5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				38304BCE28376B5A008D8DF5 /* KOKO_APP.app */,
+				38304BE928376B5B008D8DF5 /* KOKO_APPTests.xctest */,
+				38304BF328376B5B008D8DF5 /* KOKO_APPUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		38304BD028376B5A008D8DF5 /* KOKO_APP */ = {
+			isa = PBXGroup;
+			children = (
+				38304BD128376B5A008D8DF5 /* AppDelegate.h */,
+				38304BD228376B5A008D8DF5 /* AppDelegate.m */,
+				38304BD428376B5A008D8DF5 /* SceneDelegate.h */,
+				38304BD528376B5A008D8DF5 /* SceneDelegate.m */,
+				38304BD728376B5A008D8DF5 /* ViewController.h */,
+				38304BD828376B5A008D8DF5 /* ViewController.m */,
+				38304BDA28376B5A008D8DF5 /* Main.storyboard */,
+				38304BDD28376B5B008D8DF5 /* Assets.xcassets */,
+				38304BDF28376B5B008D8DF5 /* LaunchScreen.storyboard */,
+				38304BE228376B5B008D8DF5 /* Info.plist */,
+				38304BE328376B5B008D8DF5 /* main.m */,
+			);
+			path = KOKO_APP;
+			sourceTree = "<group>";
+		};
+		38304BEC28376B5B008D8DF5 /* KOKO_APPTests */ = {
+			isa = PBXGroup;
+			children = (
+				38304BED28376B5B008D8DF5 /* KOKO_APPTests.m */,
+			);
+			path = KOKO_APPTests;
+			sourceTree = "<group>";
+		};
+		38304BF628376B5B008D8DF5 /* KOKO_APPUITests */ = {
+			isa = PBXGroup;
+			children = (
+				38304BF728376B5B008D8DF5 /* KOKO_APPUITests.m */,
+				38304BF928376B5B008D8DF5 /* KOKO_APPUITestsLaunchTests.m */,
+			);
+			path = KOKO_APPUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		38304BCD28376B5A008D8DF5 /* KOKO_APP */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 38304BFD28376B5B008D8DF5 /* Build configuration list for PBXNativeTarget "KOKO_APP" */;
+			buildPhases = (
+				38304BCA28376B5A008D8DF5 /* Sources */,
+				38304BCB28376B5A008D8DF5 /* Frameworks */,
+				38304BCC28376B5A008D8DF5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KOKO_APP;
+			productName = KOKO_APP;
+			productReference = 38304BCE28376B5A008D8DF5 /* KOKO_APP.app */;
+			productType = "com.apple.product-type.application";
+		};
+		38304BE828376B5B008D8DF5 /* KOKO_APPTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 38304C0028376B5B008D8DF5 /* Build configuration list for PBXNativeTarget "KOKO_APPTests" */;
+			buildPhases = (
+				38304BE528376B5B008D8DF5 /* Sources */,
+				38304BE628376B5B008D8DF5 /* Frameworks */,
+				38304BE728376B5B008D8DF5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				38304BEB28376B5B008D8DF5 /* PBXTargetDependency */,
+			);
+			name = KOKO_APPTests;
+			productName = KOKO_APPTests;
+			productReference = 38304BE928376B5B008D8DF5 /* KOKO_APPTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		38304BF228376B5B008D8DF5 /* KOKO_APPUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 38304C0328376B5B008D8DF5 /* Build configuration list for PBXNativeTarget "KOKO_APPUITests" */;
+			buildPhases = (
+				38304BEF28376B5B008D8DF5 /* Sources */,
+				38304BF028376B5B008D8DF5 /* Frameworks */,
+				38304BF128376B5B008D8DF5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				38304BF528376B5B008D8DF5 /* PBXTargetDependency */,
+			);
+			name = KOKO_APPUITests;
+			productName = KOKO_APPUITests;
+			productReference = 38304BF328376B5B008D8DF5 /* KOKO_APPUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		38304BC628376B5A008D8DF5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					38304BCD28376B5A008D8DF5 = {
+						CreatedOnToolsVersion = 13.4;
+					};
+					38304BE828376B5B008D8DF5 = {
+						CreatedOnToolsVersion = 13.4;
+						TestTargetID = 38304BCD28376B5A008D8DF5;
+					};
+					38304BF228376B5B008D8DF5 = {
+						CreatedOnToolsVersion = 13.4;
+						TestTargetID = 38304BCD28376B5A008D8DF5;
+					};
+				};
+			};
+			buildConfigurationList = 38304BC928376B5A008D8DF5 /* Build configuration list for PBXProject "KOKO_APP" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 38304BC528376B5A008D8DF5;
+			productRefGroup = 38304BCF28376B5A008D8DF5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				38304BCD28376B5A008D8DF5 /* KOKO_APP */,
+				38304BE828376B5B008D8DF5 /* KOKO_APPTests */,
+				38304BF228376B5B008D8DF5 /* KOKO_APPUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		38304BCC28376B5A008D8DF5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				38304BE128376B5B008D8DF5 /* LaunchScreen.storyboard in Resources */,
+				38304BDE28376B5B008D8DF5 /* Assets.xcassets in Resources */,
+				38304BDC28376B5A008D8DF5 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		38304BE728376B5B008D8DF5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		38304BF128376B5B008D8DF5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		38304BCA28376B5A008D8DF5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				38304BD928376B5A008D8DF5 /* ViewController.m in Sources */,
+				38304BD328376B5A008D8DF5 /* AppDelegate.m in Sources */,
+				38304BE428376B5B008D8DF5 /* main.m in Sources */,
+				38304BD628376B5A008D8DF5 /* SceneDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		38304BE528376B5B008D8DF5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				38304BEE28376B5B008D8DF5 /* KOKO_APPTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		38304BEF28376B5B008D8DF5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				38304BFA28376B5B008D8DF5 /* KOKO_APPUITestsLaunchTests.m in Sources */,
+				38304BF828376B5B008D8DF5 /* KOKO_APPUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		38304BEB28376B5B008D8DF5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 38304BCD28376B5A008D8DF5 /* KOKO_APP */;
+			targetProxy = 38304BEA28376B5B008D8DF5 /* PBXContainerItemProxy */;
+		};
+		38304BF528376B5B008D8DF5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 38304BCD28376B5A008D8DF5 /* KOKO_APP */;
+			targetProxy = 38304BF428376B5B008D8DF5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		38304BDA28376B5A008D8DF5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				38304BDB28376B5A008D8DF5 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		38304BDF28376B5B008D8DF5 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				38304BE028376B5B008D8DF5 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		38304BFB28376B5B008D8DF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		38304BFC28376B5B008D8DF5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		38304BFE28376B5B008D8DF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = C7ZY9GQL2C;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = KOKO_APP/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jim.KOKO-APP";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		38304BFF28376B5B008D8DF5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = C7ZY9GQL2C;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = KOKO_APP/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jim.KOKO-APP";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		38304C0128376B5B008D8DF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = C7ZY9GQL2C;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jim.KOKO-APPTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KOKO_APP.app/KOKO_APP";
+			};
+			name = Debug;
+		};
+		38304C0228376B5B008D8DF5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = C7ZY9GQL2C;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jim.KOKO-APPTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KOKO_APP.app/KOKO_APP";
+			};
+			name = Release;
+		};
+		38304C0428376B5B008D8DF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = C7ZY9GQL2C;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jim.KOKO-APPUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = KOKO_APP;
+			};
+			name = Debug;
+		};
+		38304C0528376B5B008D8DF5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = C7ZY9GQL2C;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jim.KOKO-APPUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = KOKO_APP;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		38304BC928376B5A008D8DF5 /* Build configuration list for PBXProject "KOKO_APP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				38304BFB28376B5B008D8DF5 /* Debug */,
+				38304BFC28376B5B008D8DF5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		38304BFD28376B5B008D8DF5 /* Build configuration list for PBXNativeTarget "KOKO_APP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				38304BFE28376B5B008D8DF5 /* Debug */,
+				38304BFF28376B5B008D8DF5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		38304C0028376B5B008D8DF5 /* Build configuration list for PBXNativeTarget "KOKO_APPTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				38304C0128376B5B008D8DF5 /* Debug */,
+				38304C0228376B5B008D8DF5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		38304C0328376B5B008D8DF5 /* Build configuration list for PBXNativeTarget "KOKO_APPUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				38304C0428376B5B008D8DF5 /* Debug */,
+				38304C0528376B5B008D8DF5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 38304BC628376B5A008D8DF5 /* Project object */;
+}
