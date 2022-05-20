@@ -19,6 +19,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnFriend;
 @property (weak, nonatomic) IBOutlet UIButton *btnChat;
 
+@property (weak, nonatomic) IBOutlet UIView *ViewEmpty;
+@property (weak, nonatomic) IBOutlet UILabel *labelEmptyTitle;
+@property (weak, nonatomic) IBOutlet UILabel *labelEmptyContent;
+@property (weak, nonatomic) IBOutlet UIButton *btnEmptyAddFriend;
+@property (weak, nonatomic) IBOutlet UILabel *labelEmptySetupID;
+
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintBtnFriendTop;
 

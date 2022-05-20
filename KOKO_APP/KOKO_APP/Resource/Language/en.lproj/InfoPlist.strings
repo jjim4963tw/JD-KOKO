@@ -3,4 +3,8 @@
 "button_user_name"="User";
 "button_friends"="Friends";
 "button_chats"="Chats";
+"empty_title"="Let's begin add friends ：）";
+"empty_content"="Chat with your friends with KOKO! \r\n You can also receive and pay each other and send red envelopes. ：）";
+"empty_add_friend_button_title"="Add Friend";
+"empty_setup_id"="Help your friends find you faster？ <a href=\"https://www.kokobank.com/BANK/Teach/KOKOID\">Set up KOKO ID</a>";
 

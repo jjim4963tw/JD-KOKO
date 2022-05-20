@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		382A8BEE2837EEAB009E64EC /* NSString+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 382A8BED2837EEAB009E64EC /* NSString+Extend.m */; };
+		382A8BF22837FD1C009E64EC /* icon_empty_friend.png in Resources */ = {isa = PBXBuildFile; fileRef = 382A8BEF2837FD1C009E64EC /* icon_empty_friend.png */; };
+		382A8BF32837FD1C009E64EC /* icon_empty_friend@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 382A8BF02837FD1C009E64EC /* icon_empty_friend@2x.png */; };
+		382A8BF42837FD1C009E64EC /* icon_empty_friend@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 382A8BF12837FD1C009E64EC /* icon_empty_friend@3x.png */; };
+		382A8BFA28380576009E64EC /* UIImage+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 382A8BF928380576009E64EC /* UIImage+Extend.m */; };
+		382A8BFE283807E0009E64EC /* icon_add_friend@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 382A8BFB283807E0009E64EC /* icon_add_friend@2x.png */; };
+		382A8BFF283807E0009E64EC /* icon_add_friend@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 382A8BFC283807E0009E64EC /* icon_add_friend@3x.png */; };
+		382A8C00283807E0009E64EC /* icon_add_friend.png in Resources */ = {isa = PBXBuildFile; fileRef = 382A8BFD283807E0009E64EC /* icon_add_friend.png */; };
 		38304BD328376B5A008D8DF5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 38304BD228376B5A008D8DF5 /* AppDelegate.m */; };
 		38304BD628376B5A008D8DF5 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 38304BD528376B5A008D8DF5 /* SceneDelegate.m */; };
 		38304BD928376B5A008D8DF5 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38304BD828376B5A008D8DF5 /* BaseViewController.m */; };
@@ -85,6 +92,14 @@
 		382A8BEA2837ED67009E64EC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		382A8BEC2837EEAB009E64EC /* NSString+Extend.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Extend.h"; sourceTree = "<group>"; };
 		382A8BED2837EEAB009E64EC /* NSString+Extend.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extend.m"; sourceTree = "<group>"; };
+		382A8BEF2837FD1C009E64EC /* icon_empty_friend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_empty_friend.png; sourceTree = "<group>"; };
+		382A8BF02837FD1C009E64EC /* icon_empty_friend@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_empty_friend@2x.png"; sourceTree = "<group>"; };
+		382A8BF12837FD1C009E64EC /* icon_empty_friend@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_empty_friend@3x.png"; sourceTree = "<group>"; };
+		382A8BF828380576009E64EC /* UIImage+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extend.h"; sourceTree = "<group>"; };
+		382A8BF928380576009E64EC /* UIImage+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extend.m"; sourceTree = "<group>"; };
+		382A8BFB283807E0009E64EC /* icon_add_friend@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_add_friend@2x.png"; sourceTree = "<group>"; };
+		382A8BFC283807E0009E64EC /* icon_add_friend@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_add_friend@3x.png"; sourceTree = "<group>"; };
+		382A8BFD283807E0009E64EC /* icon_add_friend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_add_friend.png; sourceTree = "<group>"; };
 		38304BCE28376B5A008D8DF5 /* KOKO_APP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KOKO_APP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38304BD128376B5A008D8DF5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		38304BD228376B5A008D8DF5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -192,6 +207,8 @@
 		382A8BEB2837EE9B009E64EC /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				382A8BF828380576009E64EC /* UIImage+Extend.h */,
+				382A8BF928380576009E64EC /* UIImage+Extend.m */,
 				382A8BEC2837EEAB009E64EC /* NSString+Extend.h */,
 				382A8BED2837EEAB009E64EC /* NSString+Extend.m */,
 			);
@@ -341,9 +358,15 @@
 		38B3248F28378B7E00597D12 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				382A8BFD283807E0009E64EC /* icon_add_friend.png */,
+				382A8BFB283807E0009E64EC /* icon_add_friend@2x.png */,
+				382A8BFC283807E0009E64EC /* icon_add_friend@3x.png */,
 				388663C12837E22A00E320E2 /* icon_default_avatar.png */,
 				388663C22837E22A00E320E2 /* icon_default_avatar@2x.png */,
 				388663C32837E22A00E320E2 /* icon_default_avatar@3x.png */,
+				382A8BEF2837FD1C009E64EC /* icon_empty_friend.png */,
+				382A8BF02837FD1C009E64EC /* icon_empty_friend@2x.png */,
+				382A8BF12837FD1C009E64EC /* icon_empty_friend@3x.png */,
 				38B324C32837A7AB00597D12 /* icon_nav_atm.png */,
 				38B324BC2837A7AB00597D12 /* icon_nav_atm@2x.png */,
 				38B324C22837A7AB00597D12 /* icon_nav_atm@3x.png */,
@@ -479,6 +502,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				382A8BF42837FD1C009E64EC /* icon_empty_friend@3x.png in Resources */,
 				38304BE128376B5B008D8DF5 /* LaunchScreen.storyboard in Resources */,
 				38304BDE28376B5B008D8DF5 /* Assets.xcassets in Resources */,
 				388663C52837E22A00E320E2 /* icon_default_avatar@2x.png in Resources */,
@@ -493,6 +517,7 @@
 				38B324CB2837A7AB00597D12 /* icon_nav_atm@3x.png in Resources */,
 				38304BDC28376B5A008D8DF5 /* Main.storyboard in Resources */,
 				38B324CC2837A7AB00597D12 /* icon_nav_atm.png in Resources */,
+				382A8BFE283807E0009E64EC /* icon_add_friend@2x.png in Resources */,
 				38B324C82837A7AB00597D12 /* icon_nav_scan@2x.png in Resources */,
 				38B324C52837A7AB00597D12 /* icon_nav_atm@2x.png in Resources */,
 				38B3249C28378B8E00597D12 /* icon_tab_settings.png in Resources */,
@@ -502,11 +527,15 @@
 				38B324A028378B8E00597D12 /* icon_tab_friend.png in Resources */,
 				38B324A628378B8E00597D12 /* icon_tab_money.png in Resources */,
 				38B324A128378B8E00597D12 /* icon_tab_accounts.png in Resources */,
+				382A8BF32837FD1C009E64EC /* icon_empty_friend@2x.png in Resources */,
 				38B324A428378B8E00597D12 /* icon_tab_accounts@2x.png in Resources */,
+				382A8BFF283807E0009E64EC /* icon_add_friend@3x.png in Resources */,
 				388663BE2837E03600E320E2 /* icon_right_arrow@3x.png in Resources */,
 				388663BF2837E03600E320E2 /* icon_right_arrow.png in Resources */,
+				382A8C00283807E0009E64EC /* icon_add_friend.png in Resources */,
 				388663C62837E22A00E320E2 /* icon_default_avatar@3x.png in Resources */,
 				38B324B82837A43B00597D12 /* icon_tab_koko.png in Resources */,
+				382A8BF22837FD1C009E64EC /* icon_empty_friend.png in Resources */,
 				388663C02837E03600E320E2 /* icon_right_arrow@2x.png in Resources */,
 				38B324A328378B8E00597D12 /* icon_tab_money@2x.png in Resources */,
 				38B3249F28378B8E00597D12 /* icon_tab_friend@3x.png in Resources */,
@@ -543,6 +572,7 @@
 				38B3248B28378A3A00597D12 /* AccountsViewController.m in Sources */,
 				388663DB2837E96C00E320E2 /* AFURLRequestSerialization.m in Sources */,
 				38B3248E28378A4C00597D12 /* SettingsViewController.m in Sources */,
+				382A8BFA28380576009E64EC /* UIImage+Extend.m in Sources */,
 				388663E22837E9E000E320E2 /* APIUtility.m in Sources */,
 				388663DA2837E96C00E320E2 /* AFURLResponseSerialization.m in Sources */,
 				38B324822837889400597D12 /* MoneyViewController.m in Sources */,

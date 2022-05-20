@@ -3,4 +3,8 @@
 "button_user_name"="使用者";
 "button_friends"="好友";
 "button_chats"="聊天";
+"empty_title"="就從加好友開始吧：）";
+"empty_content"="與好友們一起用 KOKO 聊起來！\r\n還能互相收付款、發紅包喔：）";
+"empty_add_friend_button_title"="加好友";
+"empty_setup_id"="幫助好友更快找到你？ <a href=\"https://www.kokobank.com/BANK/Teach/KOKOID\">設定 KOKO ID<a>";
 
