@@ -109,6 +109,8 @@
     
     self.tableViewInvite.allowsSelection = NO;
     [self.tableViewInvite registerNib:[UINib nibWithNibName:@"InvitedTableViewCell" bundle:nil] forCellReuseIdentifier:@"InvitedTableViewCell"];
+    
+    [self setFriendListHeaderView];
 }
 
 - (void)initNavigationBar {
@@ -211,20 +213,11 @@
     return 60;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (tableView == self.tableViewInvite) {
-        return 70;
-    }
-    
-    return 60;
-}
-
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (tableView == self.tableViewInvite) {
         return 0;
     }
-    
-    return 60;
+    return 50;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -246,6 +239,25 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+}
+
+
+#pragma mark - UITableView Function
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    [UIView animateWithDuration:0.3 animations:^{
+        self.view.frame = CGRectOffset(self.view.frame, 0, -([[UIScreen mainScreen] bounds].size.height * 0.38));
+    }];
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
+    [UIView animateWithDuration:0.2 animations:^{
+        self.view.frame = CGRectOffset(self.view.frame, 0, ([[UIScreen mainScreen] bounds].size.height * 0.38));
+    }];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [self.searchBar resignFirstResponder];
 }
 
 
@@ -359,6 +371,21 @@
     }
 }
 
+- (void)setFriendListHeaderView {
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableViewList.bounds.size.width, 50.0)];
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.tableViewList.frame.size.width * 0.8, 60)];
+    self.searchBar.searchBarStyle = UISearchBarStyleMinimal;
+    self.searchBar.delegate = self;
+
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.tableViewList.frame.size.width * 0.83, (60 - 25) / 2, 25.0, 25.0)];
+    imageView.image = [UIImage imageNamed:@"icon_friend_header"];
+    
+    [view addSubview:self.searchBar];
+    [view addSubview:imageView];
+
+    self.tableViewList.tableHeaderView = view;
+}
+
 - (FriendListTableViewCell *)cellForFriendListFunctionAtTableView:(UITableView *)tableView IndexPath:(NSIndexPath *)indexPath {
     FriendUserModel *model = [self.friendList objectAtIndex: [indexPath row]];
 
@@ -398,6 +425,5 @@
     
     return cell;
 }
-
 
 @end

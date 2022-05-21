@@ -7,7 +7,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FriendListViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
+@interface FriendListViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *labelUserName;
 @property (weak, nonatomic) IBOutlet UIButton *btnUserKOKOID;
@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnEmptyAddFriend;
 @property (weak, nonatomic) IBOutlet UILabel *labelEmptySetupID;
 
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintBtnFriendTop;
 
