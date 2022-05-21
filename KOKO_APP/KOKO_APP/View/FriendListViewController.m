@@ -246,13 +246,21 @@
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
     [UIView animateWithDuration:0.3 animations:^{
-        self.view.frame = CGRectOffset(self.view.frame, 0, -([[UIScreen mainScreen] bounds].size.height * 0.38));
+        if (self.tableViewInvite.isHidden) {
+            self.view.frame = CGRectOffset(self.view.frame, 0, -([[UIScreen mainScreen] bounds].size.height * 0.2));
+        } else {
+            self.view.frame = CGRectOffset(self.view.frame, 0, -([[UIScreen mainScreen] bounds].size.height * 0.38));
+        }
     }];
 }
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
     [UIView animateWithDuration:0.2 animations:^{
-        self.view.frame = CGRectOffset(self.view.frame, 0, ([[UIScreen mainScreen] bounds].size.height * 0.38));
+        if (self.tableViewInvite.isHidden) {
+            self.view.frame = CGRectOffset(self.view.frame, 0, ([[UIScreen mainScreen] bounds].size.height * 0.2));
+        } else {
+            self.view.frame = CGRectOffset(self.view.frame, 0, ([[UIScreen mainScreen] bounds].size.height * 0.38));
+        }
     }];
 }
 
@@ -286,7 +294,7 @@
 
 /// 取的 User 的好友列表
 - (void)getFriendListData {
-    [APIUtility apiConnectionByURL:@"https://dimanyen.github.io/friend3.json" completion:^(NSMutableDictionary * _Nonnull response, NSError * _Nonnull error) {
+    [APIUtility apiConnectionByURL:@"https://dimanyen.github.io/friend4.json" completion:^(NSMutableDictionary * _Nonnull response, NSError * _Nonnull error) {
         if (response && response.count > 0) {
             NSArray *responseArray = [response objectForKey:@"response"];
             
@@ -372,10 +380,11 @@
 }
 
 - (void)setFriendListHeaderView {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableViewList.bounds.size.width, 50.0)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableViewList.bounds.size.width, 60.0)];
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.tableViewList.frame.size.width * 0.8, 60)];
     self.searchBar.searchBarStyle = UISearchBarStyleMinimal;
     self.searchBar.delegate = self;
+    self.searchBar.placeholder = [NSString localization:@"search_bar_hint"];
 
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.tableViewList.frame.size.width * 0.83, (60 - 25) / 2, 25.0, 25.0)];
     imageView.image = [UIImage imageNamed:@"icon_friend_header"];
