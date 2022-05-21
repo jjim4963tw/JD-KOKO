@@ -96,6 +96,14 @@
                                     <action selector="goSettingKOKOIDFunction:" destination="aFo-C8-cei" eventType="touchUpInside" id="ymk-Gx-kDt"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TgI-2e-At7">
+                                <rect key="frame" x="99" y="199" width="10" height="10"/>
+                                <color key="backgroundColor" name="AccentColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="10" id="G2O-X1-hrL"/>
+                                    <constraint firstAttribute="height" constant="10" id="mhH-PI-lGe"/>
+                                </constraints>
+                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_default_avatar" translatesAutoresizingMaskIntoConstraints="NO" id="RWb-dF-b0O">
                                 <rect key="frame" x="332" y="160" width="52" height="52"/>
                                 <constraints>
@@ -258,6 +266,7 @@
                             <constraint firstItem="Z2W-oU-qmR" firstAttribute="top" secondItem="9X3-0c-cka" secondAttribute="bottom" id="CdJ-0B-RaA"/>
                             <constraint firstItem="Lds-BH-MQC" firstAttribute="leading" secondItem="DNf-rd-JrZ" secondAttribute="leading" id="Gm7-Go-Rbd"/>
                             <constraint firstItem="opL-6x-v7k" firstAttribute="width" secondItem="opL-6x-v7k" secondAttribute="height" multiplier="1:1" id="H4H-II-pZ5"/>
+                            <constraint firstItem="TgI-2e-At7" firstAttribute="centerY" secondItem="5vC-Zj-FMY" secondAttribute="centerY" id="HrB-VE-V68"/>
                             <constraint firstItem="Lds-BH-MQC" firstAttribute="top" secondItem="Z2W-oU-qmR" secondAttribute="bottom" id="Ktx-6W-G10"/>
                             <constraint firstItem="Sim-6D-oVb" firstAttribute="top" secondItem="RWb-dF-b0O" secondAttribute="top" id="Kyo-pW-pZE"/>
                             <constraint firstItem="RWb-dF-b0O" firstAttribute="top" secondItem="bIw-VX-N4G" secondAttribute="bottom" constant="27" id="Ltq-A7-ybD"/>
@@ -266,6 +275,7 @@
                             <constraint firstItem="0em-dz-cQI" firstAttribute="leading" secondItem="DNf-rd-JrZ" secondAttribute="leading" constant="30" id="QdT-Mk-b0m"/>
                             <constraint firstItem="etB-Iq-gq5" firstAttribute="top" secondItem="DNf-rd-JrZ" secondAttribute="top" constant="12" id="UCt-D1-q3i"/>
                             <constraint firstItem="ePG-pE-tR4" firstAttribute="top" secondItem="RWb-dF-b0O" secondAttribute="bottom" constant="35" id="UDU-o8-l6m"/>
+                            <constraint firstItem="TgI-2e-At7" firstAttribute="leading" secondItem="5vC-Zj-FMY" secondAttribute="trailing" constant="15" id="UjW-5c-6qC"/>
                             <constraint firstItem="5vC-Zj-FMY" firstAttribute="leading" secondItem="Sim-6D-oVb" secondAttribute="leading" id="WOa-kJ-DVt"/>
                             <constraint firstItem="ePG-pE-tR4" firstAttribute="leading" secondItem="DNf-rd-JrZ" secondAttribute="leading" constant="20" id="Wsy-3B-rkj"/>
                             <constraint firstItem="5vC-Zj-FMY" firstAttribute="bottom" secondItem="RWb-dF-b0O" secondAttribute="bottom" id="YfH-bL-W4T"/>
@@ -297,6 +307,7 @@
                         <outlet property="btnFriend" destination="0em-dz-cQI" id="j51-34-drd"/>
                         <outlet property="btnUserKOKOID" destination="5vC-Zj-FMY" id="t1M-ez-u55"/>
                         <outlet property="constraintBtnFriendTop" destination="bTB-QP-r4T" id="zfQ-ja-dGm"/>
+                        <outlet property="imageViewSetID" destination="TgI-2e-At7" id="dN6-18-osB"/>
                         <outlet property="imageViewUserAvatar" destination="RWb-dF-b0O" id="LyT-y0-znA"/>
                         <outlet property="labelEmptyContent" destination="Zv5-6Y-sET" id="vAe-82-d5c"/>
                         <outlet property="labelEmptySetupID" destination="kIx-kU-JEi" id="Lvy-0s-eeq"/>

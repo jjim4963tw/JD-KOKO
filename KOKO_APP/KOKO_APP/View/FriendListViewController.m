@@ -6,6 +6,7 @@
 //
 
 #import "FriendListViewController.h"
+#import "FriendListTableViewCell.h"
 
 #import "FriendUserModel.h"
 
@@ -24,6 +25,7 @@
 @property (nonatomic, retain) NSMutableArray *chatList;
 
 @property NSInteger nowSelectedType;
+@property BOOL showInviteVisible;
 
 @end
 
@@ -44,10 +46,14 @@
 #pragma mark - Init Function
 
 - (void)initContentView {
-    self.labelUserName.text = @"User";
+    self.labelUserName.text = @"紫晽";
 
     self.imageViewUserAvatar.layer.cornerRadius = self.imageViewUserAvatar.frame.size.width / 2;
     self.imageViewUserAvatar.layer.masksToBounds = YES;
+    
+    self.imageViewSetID.layer.cornerRadius = self.imageViewSetID.frame.size.width / 2;
+    self.imageViewSetID.layer.masksToBounds = YES;
+    self.imageViewSetID.hidden = NO;
 
     [self.btnUserKOKOID setTitle:[NSString localization:@"koko_id_setting"] forState:UIControlStateNormal];
 
@@ -88,6 +94,14 @@
     
     // 當未有好友邀請時，將好友列表上移。
     self.constraintBtnFriendTop.constant = self.constraintBtnFriendTop.constant - self.tableViewInvite.frame.size.height - 6;
+
+    self.tableViewList.delegate = self;
+    self.tableViewList.dataSource = self;
+    self.tableViewInvite.delegate = self;
+    self.tableViewInvite.dataSource = self;
+    
+    self.tableViewList.allowsSelection = NO;
+    [self.tableViewList registerNib:[UINib nibWithNibName:@"FriendListTableViewCell" bundle:nil] forCellReuseIdentifier:@"FriendListTableViewCell"];
 }
 
 - (void)initNavigationBar {
@@ -96,6 +110,7 @@
 
 - (void)initUserData {
     self.nowSelectedType = 0;
+    self.showInviteVisible = NO;
     
     if (!self.friendList) {
         self.friendList = [[NSMutableArray alloc] init];
@@ -149,6 +164,84 @@
 }
 
 
+#pragma mark - UITableView Function
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    if (tableView == self.tableViewInvite && self.inviteList.count > 1 && self.showInviteVisible) {
+        // 展開邀請列表
+        return 2;
+    }
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (tableView == self.tableViewList) {
+        // 好友、聊天列表
+        if (self.nowSelectedType == 0) {
+            if (self.friendList && self.friendList.count > 0) {
+                return self.friendList.count;
+            }
+        } else {
+            if (self.chatList && self.chatList.count > 0) {
+                return self.chatList.count;
+            }
+        }
+    } else if (tableView == self.tableViewInvite) {
+        // 邀請列表
+        if (self.inviteList && self.inviteList.count > 0) {
+            return self.inviteList.count;
+        }
+    }
+    
+    return 0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (tableView == self.tableViewInvite) {
+        return 70;
+    }
+    
+    return 60;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (tableView == self.tableViewInvite) {
+        return 70;
+    }
+    
+    return 60;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (tableView == self.tableViewInvite) {
+        return 0;
+    }
+    
+    return 60;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (tableView == self.tableViewList) {
+        if (self.nowSelectedType == 0) {
+            // 好友列表
+            return [self cellForFriendListFunctionAtTableView:tableView IndexPath:indexPath];
+        } else {
+            return [[UITableViewCell alloc] init];
+        }
+        
+    } else if (tableView == self.tableViewInvite) {
+        // 邀請列表
+        return [[UITableViewCell alloc] init];
+    }
+    
+    return [[UITableViewCell alloc] init];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
+
 #pragma mark - Call API Function
 
 - (void)getUserData {
@@ -163,13 +256,16 @@
             
             if ([kokoID isEmpty]) {
                 [self.btnUserKOKOID setTitle:[NSString localization:@"koko_id_setting"] forState:UIControlStateNormal];
+                self.imageViewSetID.hidden = NO;
             } else {
                 [self.btnUserKOKOID setTitle:[NSString stringWithFormat:[NSString localization:@"koko_id_show"], kokoID] forState:UIControlStateNormal];
+                self.imageViewSetID.hidden = YES;
             }
         }
     }];
 }
 
+/// 取的 User 的好友列表
 - (void)getFriendListData {
     [APIUtility apiConnectionByURL:@"https://dimanyen.github.io/friend3.json" completion:^(NSMutableDictionary * _Nonnull response, NSError * _Nonnull error) {
         if (response && response.count > 0) {
@@ -199,7 +295,18 @@
                 }
             }
             
-            [self.tableViewList reloadData];
+            
+            if (self.friendList.count <= 0) {
+                self.tableViewList.hidden = YES;
+                self.ViewEmpty.hidden = NO;
+            } else {
+                [self.tableViewList reloadData];
+                self.tableViewList.hidden = NO;
+                self.ViewEmpty.hidden = YES;
+            }
+        } else {
+            self.tableViewList.hidden = YES;
+            self.ViewEmpty.hidden = NO;
         }
     }];
 }
@@ -223,6 +330,32 @@
         [self.btnChat setImage:self.ovilImage forState:UIControlStateNormal];
         [self.btnFriend setImage:self.clearImage forState:UIControlStateNormal];
     }
+}
+
+- (FriendListTableViewCell *)cellForFriendListFunctionAtTableView:(UITableView *)tableView IndexPath:(NSIndexPath *)indexPath {
+    FriendUserModel *model = [self.friendList objectAtIndex: [indexPath row]];
+
+    FriendListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendListTableViewCell"];
+    if (!cell) {
+        cell = [[FriendListTableViewCell alloc] init];
+    }
+    
+    cell.labelUserName.text = model.userName;
+    cell.imageViewStar.hidden = !model.isTop;
+    
+    cell.btnTransfer.hidden = NO;
+    cell.viewTransferSpace.hidden = NO;
+    if (model.status == 0) {
+        cell.btnMore.hidden = YES;
+        cell.btnInvite.hidden = NO;
+        cell.viewMoreSpace.hidden = YES;
+    } else {
+        cell.btnMore.hidden = NO;
+        cell.btnInvite.hidden = YES;
+        cell.viewMoreSpace.hidden = NO;
+    }
+    
+    return cell;
 }
 
 @end

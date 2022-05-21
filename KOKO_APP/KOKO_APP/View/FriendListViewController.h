@@ -7,11 +7,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FriendListViewController : UIViewController
+@interface FriendListViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UILabel *labelUserName;
 @property (weak, nonatomic) IBOutlet UIButton *btnUserKOKOID;
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewUserAvatar;
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewSetID;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableViewInvite;
 @property (weak, nonatomic) IBOutlet UITableView *tableViewList;
