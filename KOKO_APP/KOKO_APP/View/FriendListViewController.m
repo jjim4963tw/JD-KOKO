@@ -24,6 +24,8 @@
 @property (nonatomic, retain) NSMutableArray *friendList;
 @property (nonatomic, retain) NSMutableArray *chatList;
 
+@property CGFloat btnFriendTopConstant;
+
 @property NSInteger nowSelectedType;
 @property BOOL showInviteVisible;
 
@@ -46,6 +48,7 @@
 #pragma mark - Init Function
 
 - (void)initContentView {
+    self.btnFriendTopConstant = self.constraintBtnFriendTop.constant;
     self.labelUserName.text = @"紫晽";
 
     self.imageViewUserAvatar.layer.cornerRadius = self.imageViewUserAvatar.frame.size.width / 2;
@@ -93,7 +96,7 @@
     [self.ViewEmpty setHidden:YES];
     
     // 當未有好友邀請時，將好友列表上移。
-    self.constraintBtnFriendTop.constant = self.constraintBtnFriendTop.constant - self.tableViewInvite.frame.size.height - 6;
+    self.constraintBtnFriendTop.constant = self.btnFriendTopConstant - self.tableViewInvite.frame.size.height - 6;
 
     self.tableViewList.delegate = self;
     self.tableViewList.dataSource = self;
@@ -295,7 +298,7 @@
                 }
             }
             
-            
+            // 判斷是否顯示好友列表或顯示 EmptyView
             if (self.friendList.count <= 0) {
                 self.tableViewList.hidden = YES;
                 self.ViewEmpty.hidden = NO;
@@ -304,9 +307,28 @@
                 self.tableViewList.hidden = NO;
                 self.ViewEmpty.hidden = YES;
             }
+            
+            // 判斷是否顯示好友邀請列表
+            if (self.inviteList.count <= 0) {
+                self.tableViewInvite.hidden = YES;
+                if (self.constraintBtnFriendTop.constant == self.btnFriendTopConstant) {
+                    // 當未有好友邀請時，將好友列表上移。
+                    self.constraintBtnFriendTop.constant = self.btnFriendTopConstant - self.tableViewInvite.frame.size.height - 6;
+                }
+            } else {
+                self.tableViewInvite.hidden = NO;
+                if (self.constraintBtnFriendTop.constant != self.btnFriendTopConstant) {
+                    self.constraintBtnFriendTop.constant += self.tableViewInvite.frame.size.height + 6;
+                }
+            }
         } else {
             self.tableViewList.hidden = YES;
             self.ViewEmpty.hidden = NO;
+            self.tableViewInvite.hidden = YES;
+            if (self.constraintBtnFriendTop.constant == self.btnFriendTopConstant) {
+                // 當未有好友邀請時，將好友列表上移。
+                self.constraintBtnFriendTop.constant = self.btnFriendTopConstant - self.tableViewInvite.frame.size.height - 6;
+            }
         }
     }];
 }
