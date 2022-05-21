@@ -7,6 +7,7 @@
 
 #import "FriendListViewController.h"
 #import "FriendListTableViewCell.h"
+#import "InvitedTableViewCell.h"
 
 #import "FriendUserModel.h"
 
@@ -105,6 +106,9 @@
     
     self.tableViewList.allowsSelection = NO;
     [self.tableViewList registerNib:[UINib nibWithNibName:@"FriendListTableViewCell" bundle:nil] forCellReuseIdentifier:@"FriendListTableViewCell"];
+    
+    self.tableViewInvite.allowsSelection = NO;
+    [self.tableViewInvite registerNib:[UINib nibWithNibName:@"InvitedTableViewCell" bundle:nil] forCellReuseIdentifier:@"InvitedTableViewCell"];
 }
 
 - (void)initNavigationBar {
@@ -172,7 +176,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     if (tableView == self.tableViewInvite && self.inviteList.count > 1 && self.showInviteVisible) {
         // 展開邀請列表
-        return 2;
+        return 1;
     }
     return 1;
 }
@@ -234,7 +238,7 @@
         
     } else if (tableView == self.tableViewInvite) {
         // 邀請列表
-        return [[UITableViewCell alloc] init];
+        return [self cellForFriendInvitedListFunctionAtTableView:tableView IndexPath:indexPath];
     }
     
     return [[UITableViewCell alloc] init];
@@ -316,6 +320,7 @@
                     self.constraintBtnFriendTop.constant = self.btnFriendTopConstant - self.tableViewInvite.frame.size.height - 6;
                 }
             } else {
+                [self.tableViewInvite reloadData];
                 self.tableViewInvite.hidden = NO;
                 if (self.constraintBtnFriendTop.constant != self.btnFriendTopConstant) {
                     self.constraintBtnFriendTop.constant += self.tableViewInvite.frame.size.height + 6;
@@ -379,5 +384,20 @@
     
     return cell;
 }
+
+- (InvitedTableViewCell *)cellForFriendInvitedListFunctionAtTableView:(UITableView *)tableView IndexPath:(NSIndexPath *)indexPath {
+    FriendUserModel *model = [self.inviteList objectAtIndex: [indexPath row]];
+
+    InvitedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InvitedTableViewCell"];
+    if (!cell) {
+        cell = [[InvitedTableViewCell alloc] init];
+    }
+    
+    cell.labelUserName.text = model.userName;
+    cell.labelContent.text = [NSString localization:@"label_invite_message"];
+    
+    return cell;
+}
+
 
 @end

@@ -11,12 +11,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface InvitedTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIView *viewContent;
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewUserAvatar;
 @property (weak, nonatomic) IBOutlet UILabel *labelUserName;
 @property (weak, nonatomic) IBOutlet UILabel *labelContent;
 @property (weak, nonatomic) IBOutlet UIButton *btnAgreeInvited;
 @property (weak, nonatomic) IBOutlet UIButton *btnDeleteInvited;
-
 
 @end
 
