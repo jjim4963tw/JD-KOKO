@@ -48,6 +48,7 @@
 		3862458E2839034500961D63 /* icon_friend_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3862458B2839034500961D63 /* icon_friend_header@2x.png */; };
 		3862458F2839034500961D63 /* icon_friend_header@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3862458C2839034500961D63 /* icon_friend_header@3x.png */; };
 		386245902839034500961D63 /* icon_friend_header.png in Resources */ = {isa = PBXBuildFile; fileRef = 3862458D2839034500961D63 /* icon_friend_header.png */; };
+		3862459928393F1700961D63 /* MKNumberBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3862459728393F1700961D63 /* MKNumberBadgeView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		388663BE2837E03600E320E2 /* icon_right_arrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 388663BB2837E03600E320E2 /* icon_right_arrow@3x.png */; };
 		388663BF2837E03600E320E2 /* icon_right_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 388663BC2837E03600E320E2 /* icon_right_arrow.png */; };
 		388663C02837E03600E320E2 /* icon_right_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 388663BD2837E03600E320E2 /* icon_right_arrow@2x.png */; };
@@ -166,6 +167,8 @@
 		3862458B2839034500961D63 /* icon_friend_header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_friend_header@2x.png"; sourceTree = "<group>"; };
 		3862458C2839034500961D63 /* icon_friend_header@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_friend_header@3x.png"; sourceTree = "<group>"; };
 		3862458D2839034500961D63 /* icon_friend_header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_friend_header.png; sourceTree = "<group>"; };
+		3862459728393F1700961D63 /* MKNumberBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKNumberBadgeView.m; sourceTree = "<group>"; };
+		3862459828393F1700961D63 /* MKNumberBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKNumberBadgeView.h; sourceTree = "<group>"; };
 		388663BB2837E03600E320E2 /* icon_right_arrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_right_arrow@3x.png"; sourceTree = "<group>"; };
 		388663BC2837E03600E320E2 /* icon_right_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_right_arrow.png; sourceTree = "<group>"; };
 		388663BD2837E03600E320E2 /* icon_right_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_right_arrow@2x.png"; sourceTree = "<group>"; };
@@ -382,10 +385,20 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
+		3862459628393F1700961D63 /* MKNumberBadgeView */ = {
+			isa = PBXGroup;
+			children = (
+				3862459828393F1700961D63 /* MKNumberBadgeView.h */,
+				3862459728393F1700961D63 /* MKNumberBadgeView.m */,
+			);
+			path = MKNumberBadgeView;
+			sourceTree = "<group>";
+		};
 		388663C92837E93D00E320E2 /* Library */ = {
 			isa = PBXGroup;
 			children = (
 				388663CA2837E94A00E320E2 /* AFNetworking */,
+				3862459628393F1700961D63 /* MKNumberBadgeView */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -690,6 +703,7 @@
 				388663D92837E96C00E320E2 /* AFURLSessionManager.m in Sources */,
 				38304BD328376B5A008D8DF5 /* AppDelegate.m in Sources */,
 				388663DC2837E96C00E320E2 /* AFSecurityPolicy.m in Sources */,
+				3862459928393F1700961D63 /* MKNumberBadgeView.m in Sources */,
 				388663DD2837E96C00E320E2 /* AFNetworkReachabilityManager.m in Sources */,
 				38304BE428376B5B008D8DF5 /* main.m in Sources */,
 				3862455F2838C4CF00961D63 /* FriendListTableViewCell.m in Sources */,

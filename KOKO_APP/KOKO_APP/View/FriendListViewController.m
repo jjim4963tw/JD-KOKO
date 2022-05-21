@@ -8,6 +8,8 @@
 #import "FriendListViewController.h"
 #import "FriendListTableViewCell.h"
 #import "InvitedTableViewCell.h"
+#import "MKNumberBadgeView.h"
+
 
 #import "FriendUserModel.h"
 
@@ -111,6 +113,7 @@
     [self.tableViewInvite registerNib:[UINib nibWithNibName:@"InvitedTableViewCell" bundle:nil] forCellReuseIdentifier:@"InvitedTableViewCell"];
     
     [self setFriendListHeaderView];
+    [self setBadgeView];
 }
 
 - (void)initNavigationBar {
@@ -355,6 +358,8 @@
                 self.constraintBtnFriendTop.constant = self.btnFriendTopConstant - self.tableViewInvite.frame.size.height - 6;
             }
         }
+        
+        [self setBadgeView];
     }];
 }
 
@@ -393,6 +398,39 @@
     [view addSubview:imageView];
 
     self.tableViewList.tableHeaderView = view;
+}
+
+- (void)setBadgeView {
+    MKNumberBadgeView *numberBadge = [[MKNumberBadgeView alloc] initWithFrame:CGRectMake(self.btnChat.frame.size.width - 10, -10, 40, self.btnChat.frame.size.height)];
+    numberBadge.value = @"99+";
+    numberBadge.shadow = NO;
+    numberBadge.shine = NO;
+    numberBadge.fillColor = [UIColor colorWithRed: 0.98 green: 0.70 blue: 0.86 alpha: 1.00];
+    numberBadge.textColor = [UIColor whiteColor];
+
+    for (UIView *subView in self.btnChat.subviews) {
+        if ([subView isKindOfClass:[MKNumberBadgeView class]]) {
+            [subView removeFromSuperview];
+        }
+    }
+    [self.btnChat addSubview:numberBadge];
+    
+
+    for (UIView *subView in self.btnFriend.subviews) {
+        if ([subView isKindOfClass:[MKNumberBadgeView class]]) {
+            [subView removeFromSuperview];
+        }
+    }
+
+    if (self.inviteList && self.inviteList.count > 0) {
+        MKNumberBadgeView *inviteBadge = [[MKNumberBadgeView alloc] initWithFrame:CGRectMake(self.btnFriend.frame.size.width - 10, -10, 20, self.btnChat.frame.size.height)];
+        inviteBadge.value = [NSString stringWithFormat:@"%d", (int) self.inviteList.count];
+        inviteBadge.shadow = NO;
+        inviteBadge.shine = NO;
+        inviteBadge.fillColor = [UIColor colorWithRed: 0.98 green: 0.70 blue: 0.86 alpha: 1.00];
+        inviteBadge.textColor = [UIColor whiteColor];
+        [self.btnFriend addSubview:inviteBadge];
+    }
 }
 
 - (FriendListTableViewCell *)cellForFriendListFunctionAtTableView:(UITableView *)tableView IndexPath:(NSIndexPath *)indexPath {
