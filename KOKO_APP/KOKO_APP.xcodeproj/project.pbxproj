@@ -25,6 +25,7 @@
 		38304BEE28376B5B008D8DF5 /* KOKO_APPTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 38304BED28376B5B008D8DF5 /* KOKO_APPTests.m */; };
 		38304BF828376B5B008D8DF5 /* KOKO_APPUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 38304BF728376B5B008D8DF5 /* KOKO_APPUITests.m */; };
 		38304BFA28376B5B008D8DF5 /* KOKO_APPUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 38304BF928376B5B008D8DF5 /* KOKO_APPUITestsLaunchTests.m */; };
+		386245582838B97E00961D63 /* FriendUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 386245572838B97E00961D63 /* FriendUserModel.m */; };
 		388663BE2837E03600E320E2 /* icon_right_arrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 388663BB2837E03600E320E2 /* icon_right_arrow@3x.png */; };
 		388663BF2837E03600E320E2 /* icon_right_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 388663BC2837E03600E320E2 /* icon_right_arrow.png */; };
 		388663C02837E03600E320E2 /* icon_right_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 388663BD2837E03600E320E2 /* icon_right_arrow@2x.png */; };
@@ -117,6 +118,8 @@
 		38304BF328376B5B008D8DF5 /* KOKO_APPUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KOKO_APPUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		38304BF728376B5B008D8DF5 /* KOKO_APPUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KOKO_APPUITests.m; sourceTree = "<group>"; };
 		38304BF928376B5B008D8DF5 /* KOKO_APPUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KOKO_APPUITestsLaunchTests.m; sourceTree = "<group>"; };
+		386245562838B97E00961D63 /* FriendUserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendUserModel.h; sourceTree = "<group>"; };
+		386245572838B97E00961D63 /* FriendUserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendUserModel.m; sourceTree = "<group>"; };
 		388663BB2837E03600E320E2 /* icon_right_arrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_right_arrow@3x.png"; sourceTree = "<group>"; };
 		388663BC2837E03600E320E2 /* icon_right_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_right_arrow.png; sourceTree = "<group>"; };
 		388663BD2837E03600E320E2 /* icon_right_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_right_arrow@2x.png"; sourceTree = "<group>"; };
@@ -246,6 +249,7 @@
 				38304BDD28376B5B008D8DF5 /* Assets.xcassets */,
 				38304C0828376BFF008D8DF5 /* Layout */,
 				38304C0628376BDF008D8DF5 /* View */,
+				386245552838B96400961D63 /* Model */,
 				388663DF2837E9CD00E320E2 /* Utility */,
 				382A8BEB2837EE9B009E64EC /* Extension */,
 				388663C92837E93D00E320E2 /* Library */,
@@ -307,6 +311,15 @@
 				38304BDF28376B5B008D8DF5 /* LaunchScreen.storyboard */,
 			);
 			path = Layout;
+			sourceTree = "<group>";
+		};
+		386245552838B96400961D63 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				386245562838B97E00961D63 /* FriendUserModel.h */,
+				386245572838B97E00961D63 /* FriendUserModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		388663C92837E93D00E320E2 /* Library */ = {
@@ -584,6 +597,7 @@
 				388663DE2837E96C00E320E2 /* AFHTTPSessionManager.m in Sources */,
 				38304BD628376B5A008D8DF5 /* SceneDelegate.m in Sources */,
 				38B3248828378A2900597D12 /* KOKOIndexViewController.m in Sources */,
+				386245582838B97E00961D63 /* FriendUserModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

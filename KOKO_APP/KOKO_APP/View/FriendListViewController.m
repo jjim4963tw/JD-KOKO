@@ -6,8 +6,10 @@
 //
 
 #import "FriendListViewController.h"
-#import "APIUtility.h"
 
+#import "FriendUserModel.h"
+
+#import "APIUtility.h"
 #import "NSString+Extend.h"
 #import "UIImage+Extend.h"
 
@@ -17,12 +19,18 @@
 @property(retain) UIImage *ovilImage;
 @property(retain) UIImage *clearImage;
 
+@property (nonatomic, retain) NSMutableArray *inviteList;
+@property (nonatomic, retain) NSMutableArray *friendList;
+@property (nonatomic, retain) NSMutableArray *chatList;
+
+@property NSInteger nowSelectedType;
+
 @end
 
 
-#pragma mark - LifeCycle Function Function
-
 @implementation FriendListViewController
+
+#pragma mark - LifeCycle Function Function
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -87,21 +95,28 @@
 }
 
 - (void)initUserData {
-    [APIUtility apiConnectionByURL:@"https://dimanyen.github.io/man.json" completion:^(NSMutableDictionary * _Nonnull response, NSError * _Nonnull error) {
-        if (response && response.count > 0) {
-            NSArray *responseArray = [response objectForKey:@"response"];
-            NSString *userName = [[responseArray objectAtIndex:0] objectForKey:@"name"];
-            NSString *kokoID = [[responseArray objectAtIndex:0]  objectForKey:@"kokoid"];
+    self.nowSelectedType = 0;
+    
+    if (!self.friendList) {
+        self.friendList = [[NSMutableArray alloc] init];
+    } else {
+        [self.friendList removeAllObjects];
+    }
+    
+    if (!self.chatList) {
+        self.chatList = [[NSMutableArray alloc] init];
+    } else {
+        [self.chatList removeAllObjects];
+    }
 
-            self.labelUserName.text = userName;
-            
-            if ([kokoID isEmpty]) {
-                [self.btnUserKOKOID setTitle:[NSString localization:@"koko_id_setting"] forState:UIControlStateNormal];
-            } else {
-                [self.btnUserKOKOID setTitle:[NSString stringWithFormat:[NSString localization:@"koko_id_show"], kokoID] forState:UIControlStateNormal];
-            }
-        }
-    }];
+    if (!self.inviteList) {
+        self.inviteList = [[NSMutableArray alloc] init];
+    } else {
+        [self.inviteList removeAllObjects];
+    }
+    
+    [self getUserData];
+    [self getFriendListData];
 }
 
 
@@ -125,9 +140,68 @@
 
 - (IBAction)switchFriendOrCharList:(UIButton *)sender {
     [self changeChatAndFriendListButtonStyle:sender];
+    
+    self.nowSelectedType = (sender == self.btnFriend) ? 0 : 1;
+    [self.tableViewList reloadData];
 }
 
 - (IBAction)addFriendFunction:(UIButton *)sender {
+}
+
+
+#pragma mark - Call API Function
+
+- (void)getUserData {
+    // 取得此 User 的資料
+    [APIUtility apiConnectionByURL:@"https://dimanyen.github.io/man.json" completion:^(NSMutableDictionary * _Nonnull response, NSError * _Nonnull error) {
+        if (response && response.count > 0) {
+            NSArray *responseArray = [response objectForKey:@"response"];
+            NSString *userName = [[responseArray objectAtIndex:0] objectForKey:@"name"];
+            NSString *kokoID = [[responseArray objectAtIndex:0]  objectForKey:@"kokoid"];
+
+            self.labelUserName.text = userName;
+            
+            if ([kokoID isEmpty]) {
+                [self.btnUserKOKOID setTitle:[NSString localization:@"koko_id_setting"] forState:UIControlStateNormal];
+            } else {
+                [self.btnUserKOKOID setTitle:[NSString stringWithFormat:[NSString localization:@"koko_id_show"], kokoID] forState:UIControlStateNormal];
+            }
+        }
+    }];
+}
+
+- (void)getFriendListData {
+    [APIUtility apiConnectionByURL:@"https://dimanyen.github.io/friend3.json" completion:^(NSMutableDictionary * _Nonnull response, NSError * _Nonnull error) {
+        if (response && response.count > 0) {
+            NSArray *responseArray = [response objectForKey:@"response"];
+            
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            for (NSDictionary *userDic in responseArray) {
+                NSString *userName = [userDic objectForKey:@"name"];
+                NSString *userID = [userDic objectForKey:@"fid"];
+                NSInteger status = [[userDic objectForKey:@"status"] integerValue];
+                BOOL isTop = [[userDic objectForKey:@"isTop"] isEqualToString:@"1"];
+                
+                NSString *updateTimeString = [userDic objectForKey:@"updateDate"];
+                if ([updateTimeString containsString:@"/"]) {
+                    [formatter setDateFormat:@"yyyy/MM/dd"];
+                } else {
+                    [formatter setDateFormat:@"yyyyMMdd"];
+                }
+                NSDate *updateDate = [formatter dateFromString:updateTimeString];
+
+                FriendUserModel *model = [[FriendUserModel alloc] initWithUserName:userName userID:userID status:status updateTimes:updateDate isTop:isTop];
+                
+                if (status == 2) {
+                    [self.inviteList addObject:model];
+                } else {
+                    [self.friendList addObject:model];
+                }
+            }
+            
+            [self.tableViewList reloadData];
+        }
+    }];
 }
 
 
