@@ -26,6 +26,8 @@
 @property (nonatomic, retain) NSMutableArray *inviteList;
 @property (nonatomic, retain) NSMutableArray *friendList;
 @property (nonatomic, retain) NSMutableArray *chatList;
+@property (nonatomic, retain) NSMutableArray *searchList;
+
 
 @property CGFloat btnFriendTopConstant;
 
@@ -267,6 +269,42 @@
     }];
 }
 
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    if (!searchText || [searchText isEmpty]) {
+        // 當搜尋欄為空時，須還原原本的資料
+        if ([self.searchList count] > 0) {
+            if (self.nowSelectedType == 0) {
+                self.friendList = [[NSMutableArray alloc] initWithArray:self.searchList];
+                [self.searchList removeAllObjects];
+            } else {
+                self.chatList = [[NSMutableArray alloc] initWithArray:self.searchList];
+                [self.searchList removeAllObjects];
+            }
+            
+            [self.tableViewList reloadData];
+        }
+    } else {
+        if (self.nowSelectedType == 0) {
+            // 搜尋 Model 中是否有符合的名稱。
+            self.searchList = [[NSMutableArray alloc] initWithArray:self.friendList];
+            [self.friendList removeAllObjects];
+            
+            for (FriendUserModel *model in self.searchList) {
+                if ([model.userName containsString:searchText]) {
+                    [self.friendList addObject:model];
+                }
+            }
+
+            [self.tableViewList reloadData];
+        } else {
+            self.searchList = [[NSMutableArray alloc] initWithArray:self.chatList];
+            [self.chatList removeAllObjects];
+            
+            // TODO: Chat 方法
+        }
+    }
+}
+
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [self.searchBar resignFirstResponder];
 }
@@ -297,7 +335,7 @@
 
 /// 取的 User 的好友列表
 - (void)getFriendListData {
-    [APIUtility apiConnectionByURL:@"https://dimanyen.github.io/friend4.json" completion:^(NSMutableDictionary * _Nonnull response, NSError * _Nonnull error) {
+    [APIUtility apiConnectionByURL:@"https://dimanyen.github.io/friend3.json" completion:^(NSMutableDictionary * _Nonnull response, NSError * _Nonnull error) {
         if (response && response.count > 0) {
             NSArray *responseArray = [response objectForKey:@"response"];
             
