@@ -30,4 +30,7 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintBtnFriendTop;
 
+@property (strong, nonatomic) NSString *userURLString;
+
+
 @end

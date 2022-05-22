@@ -36,7 +36,6 @@
 
 @end
 
-
 @implementation FriendListViewController
 
 #pragma mark - LifeCycle Function Function
@@ -144,8 +143,10 @@
         [self.inviteList removeAllObjects];
     }
     
-    [self getUserData];
-    [self getFriendListData];
+    if (![self.userURLString isEqualToString:@"https://dimanyen.github.io/friend4.json"]) {
+        [self getUserData];
+    }
+    [self getFriendListData:self.userURLString];
 }
 
 
@@ -334,8 +335,8 @@
 }
 
 /// 取的 User 的好友列表
-- (void)getFriendListData {
-    [APIUtility apiConnectionByURL:@"https://dimanyen.github.io/friend3.json" completion:^(NSMutableDictionary * _Nonnull response, NSError * _Nonnull error) {
+- (void)getFriendListData:(NSString *)urlString {
+    [APIUtility apiConnectionByURL:urlString completion:^(NSMutableDictionary * _Nonnull response, NSError * _Nonnull error) {
         if (response && response.count > 0) {
             NSArray *responseArray = [response objectForKey:@"response"];
             
@@ -359,45 +360,39 @@
                 if (status == 2) {
                     [self.inviteList addObject:model];
                 } else {
-                    [self.friendList addObject:model];
+                    BOOL isExist = NO;
+                    FriendUserModel *removeModel = nil;
+                    for (int i = 0 ; i < self.friendList.count ; i++) {
+                        FriendUserModel *tempModel = [self.friendList objectAtIndex:i];
+                        if ([model.userID isEqualToString:tempModel.userID]) {
+                            // 判斷如有重複的 FID，取更新時間較新的資料
+                            if ([model.updateTimes compare:tempModel.updateTimes] == NSOrderedDescending) {
+                                removeModel = tempModel;
+                            }
+                            
+                            isExist = YES;
+                            break;
+                        }
+                    }
+
+                    if (removeModel != nil) {
+                        [self.friendList removeObject:removeModel];
+                    }
+                    
+                    if (!isExist || (isExist && removeModel != nil)) {
+                        [self.friendList addObject:model];
+                    }
                 }
             }
             
-            // 判斷是否顯示好友列表或顯示 EmptyView
-            if (self.friendList.count <= 0) {
-                self.tableViewList.hidden = YES;
-                self.ViewEmpty.hidden = NO;
+            if ([urlString isEqualToString:@"https://dimanyen.github.io/friend1.json"]) {
+                [self getFriendListData:@"https://dimanyen.github.io/friend2.json"];
             } else {
-                [self.tableViewList reloadData];
-                self.tableViewList.hidden = NO;
-                self.ViewEmpty.hidden = YES;
-            }
-            
-            // 判斷是否顯示好友邀請列表
-            if (self.inviteList.count <= 0) {
-                self.tableViewInvite.hidden = YES;
-                if (self.constraintBtnFriendTop.constant == self.btnFriendTopConstant) {
-                    // 當未有好友邀請時，將好友列表上移。
-                    self.constraintBtnFriendTop.constant = self.btnFriendTopConstant - self.tableViewInvite.frame.size.height - 6;
-                }
-            } else {
-                [self.tableViewInvite reloadData];
-                self.tableViewInvite.hidden = NO;
-                if (self.constraintBtnFriendTop.constant != self.btnFriendTopConstant) {
-                    self.constraintBtnFriendTop.constant += self.tableViewInvite.frame.size.height + 6;
-                }
+                [self changeChatAndFriendListStyle:response];
             }
         } else {
-            self.tableViewList.hidden = YES;
-            self.ViewEmpty.hidden = NO;
-            self.tableViewInvite.hidden = YES;
-            if (self.constraintBtnFriendTop.constant == self.btnFriendTopConstant) {
-                // 當未有好友邀請時，將好友列表上移。
-                self.constraintBtnFriendTop.constant = self.btnFriendTopConstant - self.tableViewInvite.frame.size.height - 6;
-            }
+            [self changeChatAndFriendListStyle:nil];
         }
-        
-        [self setBadgeView];
     }];
 }
 
@@ -420,6 +415,45 @@
         [self.btnChat setImage:self.ovilImage forState:UIControlStateNormal];
         [self.btnFriend setImage:self.clearImage forState:UIControlStateNormal];
     }
+}
+
+- (void)changeChatAndFriendListStyle:(NSMutableDictionary *)response {
+    if (response && response.count > 0) {
+        // 判斷是否顯示好友列表或顯示 EmptyView
+        if (self.friendList.count <= 0) {
+            self.tableViewList.hidden = YES;
+            self.ViewEmpty.hidden = NO;
+        } else {
+            [self.tableViewList reloadData];
+            self.tableViewList.hidden = NO;
+            self.ViewEmpty.hidden = YES;
+        }
+        
+        // 判斷是否顯示好友邀請列表
+        if (self.inviteList.count <= 0) {
+            self.tableViewInvite.hidden = YES;
+            if (self.constraintBtnFriendTop.constant == self.btnFriendTopConstant) {
+                // 當未有好友邀請時，將好友列表上移。
+                self.constraintBtnFriendTop.constant = self.btnFriendTopConstant - self.tableViewInvite.frame.size.height - 6;
+            }
+        } else {
+            [self.tableViewInvite reloadData];
+            self.tableViewInvite.hidden = NO;
+            if (self.constraintBtnFriendTop.constant != self.btnFriendTopConstant) {
+                self.constraintBtnFriendTop.constant += self.tableViewInvite.frame.size.height + 6;
+            }
+        }
+    } else {
+        self.tableViewList.hidden = YES;
+        self.ViewEmpty.hidden = NO;
+        self.tableViewInvite.hidden = YES;
+        if (self.constraintBtnFriendTop.constant == self.btnFriendTopConstant) {
+            // 當未有好友邀請時，將好友列表上移。
+            self.constraintBtnFriendTop.constant = self.btnFriendTopConstant - self.tableViewInvite.frame.size.height - 6;
+        }
+    }
+    
+    [self setBadgeView];
 }
 
 - (void)setFriendListHeaderView {
