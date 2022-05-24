@@ -102,6 +102,12 @@
     // 當未有好友邀請時，將好友列表上移。
     self.constraintBtnFriendTop.constant = self.btnFriendTopConstant - self.tableViewInvite.frame.size.height - 6;
 
+    [self initTableView];
+    [self setFriendListHeaderView];
+    [self setBadgeView];
+}
+
+- (void)initTableView {
     self.tableViewList.delegate = self;
     self.tableViewList.dataSource = self;
     self.tableViewInvite.delegate = self;
@@ -113,8 +119,7 @@
     self.tableViewInvite.allowsSelection = NO;
     [self.tableViewInvite registerNib:[UINib nibWithNibName:@"InvitedTableViewCell" bundle:nil] forCellReuseIdentifier:@"InvitedTableViewCell"];
     
-    [self setFriendListHeaderView];
-    [self setBadgeView];
+    [self setRefreshControl];
 }
 
 - (void)initNavigationBar {
@@ -172,6 +177,7 @@
     [self changeChatAndFriendListButtonStyle:sender];
     
     self.nowSelectedType = (sender == self.btnFriend) ? 0 : 1;
+    [self setRefreshControl];
     [self.tableViewList reloadData];
 }
 
@@ -453,6 +459,10 @@
         }
     }
     
+    if (self.tableViewList.refreshControl) {
+        [self.tableViewList.refreshControl endRefreshing];
+    }
+    
     [self setBadgeView];
 }
 
@@ -502,6 +512,26 @@
         inviteBadge.fillColor = [UIColor colorWithRed: 0.98 green: 0.70 blue: 0.86 alpha: 1.00];
         inviteBadge.textColor = [UIColor whiteColor];
         [self.btnFriend addSubview:inviteBadge];
+    }
+}
+
+- (void)setRefreshControl {
+    UIRefreshControl *control = [[UIRefreshControl alloc] init];
+    control.attributedTitle = [[NSAttributedString alloc] initWithString:[NSString localization:@"refresh_text"]];
+    [control addTarget:self action:@selector(refreshFriendOrChatList) forControlEvents:UIControlEventValueChanged];
+    
+    if (self.nowSelectedType == 0) {
+        self.tableViewList.refreshControl = control;
+    } else {
+        self.tableViewList.refreshControl = nil;
+    }
+}
+
+- (void)refreshFriendOrChatList {
+    if (self.nowSelectedType == 0) {
+        [self getFriendListData:self.userURLString];
+    } else if (self.nowSelectedType == 1) {
+        // ... chat
     }
 }
 
