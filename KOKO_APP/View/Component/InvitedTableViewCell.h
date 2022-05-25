@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface InvitedTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIView *viewContent;
+@property (weak, nonatomic) IBOutlet UIView *viewExpandable;
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewUserAvatar;
 @property (weak, nonatomic) IBOutlet UILabel *labelUserName;
 @property (weak, nonatomic) IBOutlet UILabel *labelContent;

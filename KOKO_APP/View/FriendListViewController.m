@@ -61,39 +61,12 @@
     self.imageViewSetID.layer.cornerRadius = self.imageViewSetID.frame.size.width / 2;
     self.imageViewSetID.layer.masksToBounds = YES;
     self.imageViewSetID.hidden = NO;
-
-    [self.btnUserKOKOID setTitle:[NSString localization:@"koko_id_setting"] forState:UIControlStateNormal];
-
-    UIButtonConfiguration *configuration = [UIButtonConfiguration filledButtonConfiguration];
-    configuration.background.backgroundColor = UIColor.clearColor;
-    configuration.titleAlignment = UIButtonConfigurationTitleAlignmentCenter;
-    configuration.imagePadding = 5.0;
-    configuration.imagePlacement = NSDirectionalRectEdgeBottom;
-    self.btnFriend.configuration = configuration;
-    self.btnChat.configuration = configuration;
-        
-    [self.btnFriend setImage:self.ovilImage forState:UIControlStateNormal];
-    [self.btnFriend setTitle:[NSString localization:@"button_friends"] forState:UIControlStateNormal];
-    [self.btnChat setTitle:[NSString localization:@"button_chats"] forState:UIControlStateNormal];
-    
-    [self changeChatAndFriendListButtonStyle:self.btnFriend];
-    
-    // iOS 15 改用此方法設定 style
-    UIImage *gradientImage = [UIImage convertGradientToImage:[UIColor colorWithRed: 0.34 green: 0.70 blue: 0.04 alpha: 1.00] endColor:[UIColor colorWithRed: 0.65 green: 0.80 blue: 0.26 alpha: 1.00] frame:self.btnEmptyAddFriend.frame];
-    configuration = [UIButtonConfiguration filledButtonConfiguration];
-    configuration.background.image = gradientImage;
-    configuration.background.cornerRadius = 20.0;
-    configuration.image = [UIImage imageNamed:@"icon_add_friend"];
-    configuration.imagePlacement = NSDirectionalRectEdgeTrailing;
-    configuration.titleAlignment = UIButtonConfigurationTitleAlignmentCenter;
-    configuration.title = [NSString localization:@"empty_add_friend_button_title"];
-    self.btnEmptyAddFriend.configuration = configuration;
     
     self.labelEmptyTitle.text = [NSString localization:@"empty_title"];
     self.labelEmptyContent.text = [NSString localization:@"empty_content"];
     
-    NSAttributedString *attrStr = [[NSAttributedString alloc] initWithData:[[NSString localization:@"empty_setup_id"] dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType} documentAttributes:nil error:nil];
-    self.labelEmptySetupID.attributedText = attrStr;
+    [self.labelEmptySetupID setHTMLText:[NSString localization:@"empty_setup_id"]];
+    self.labelEmptySetupID.linkDelegate = self;
 
     [self.tableViewInvite setHidden:YES];
     [self.tableViewList setHidden:NO];
@@ -101,10 +74,72 @@
     
     // 當未有好友邀請時，將好友列表上移。
     self.constraintBtnFriendTop.constant = self.btnFriendTopConstant - self.tableViewInvite.frame.size.height - 6;
+    
+    self.ovilImage = [UIImage createOvalImage:[UIColor colorNamed:@"AccentColor"] endColor:[UIColor colorNamed:@"AccentColor"] frame:self.btnFriend.frame];
+    self.clearImage = [UIImage createOvalImage:[UIColor clearColor] endColor:[UIColor clearColor] frame:self.btnFriend.frame];
 
+    [self initButton];
+    [self changeChatAndFriendListButtonStyle:self.btnFriend];
     [self initTableView];
     [self setFriendListHeaderView];
     [self setBadgeView];
+}
+
+- (void)initButton {
+    [self.btnUserKOKOID setTitle:[NSString localization:@"koko_id_setting"] forState:UIControlStateNormal];
+
+    [self.btnFriend setImage:self.ovilImage forState:UIControlStateNormal];
+    [self.btnFriend setTitle:[NSString localization:@"button_friends"] forState:UIControlStateNormal];
+    [self.btnChat setImage:self.clearImage forState:UIControlStateNormal];
+    [self.btnChat setTitle:[NSString localization:@"button_chats"] forState:UIControlStateNormal];
+
+    // iOS 15 改用此方法設定 style
+    if (@available(iOS 15.0, *)) {
+        UIButtonConfiguration *configuration = [UIButtonConfiguration filledButtonConfiguration];
+        configuration.background.backgroundColor = UIColor.clearColor;
+        configuration.titleAlignment = UIButtonConfigurationTitleAlignmentCenter;
+        configuration.imagePadding = 5.0;
+        configuration.imagePlacement = NSDirectionalRectEdgeBottom;
+        self.btnFriend.configuration = configuration;
+        self.btnChat.configuration = configuration;
+    } else {
+        CGSize imageViewSize = self.btnFriend.imageView.frame.size;
+        self.btnFriend.titleEdgeInsets = UIEdgeInsetsMake(-(imageViewSize.height + 5), -imageViewSize.width, 0, 0);
+        CGSize textSize = [[NSString localization:@"button_friends"] sizeWithAttributes:@{NSFontAttributeName: self.btnFriend.titleLabel.font}];
+        self.btnFriend.imageEdgeInsets = UIEdgeInsetsMake((textSize.height + 5), 0, 0, -textSize.width);
+        self.btnFriend.contentEdgeInsets = UIEdgeInsetsMake(imageViewSize.height, 0, imageViewSize.height, 0);
+        
+        imageViewSize = self.btnChat.imageView.frame.size;
+        self.btnChat.titleEdgeInsets = UIEdgeInsetsMake(-(imageViewSize.height + 5), -imageViewSize.width, 0, 0);
+        textSize = [[NSString localization:@"button_chats"] sizeWithAttributes:@{NSFontAttributeName: self.btnChat.titleLabel.font}];
+        self.btnChat.imageEdgeInsets = UIEdgeInsetsMake((textSize.height + 5), 0, 0, -textSize.width);
+        self.btnChat.contentEdgeInsets = UIEdgeInsetsMake(imageViewSize.height, 0, imageViewSize.height, 0);
+    }
+
+    UIImage *gradientImage = [UIImage convertGradientToImage:[UIColor colorWithRed: 0.34 green: 0.70 blue: 0.04 alpha: 1.00] endColor:[UIColor colorWithRed: 0.65 green: 0.80 blue: 0.26 alpha: 1.00] frame:self.btnEmptyAddFriend.frame];
+    if (@available(iOS 15.0, *)) {
+        UIButtonConfiguration *configuration = [UIButtonConfiguration filledButtonConfiguration];
+        configuration.background.image = gradientImage;
+        configuration.background.cornerRadius = 20.0;
+        configuration.image = [UIImage imageNamed:@"icon_add_friend"];
+        configuration.imagePlacement = NSDirectionalRectEdgeTrailing;
+        configuration.titleAlignment = UIButtonConfigurationTitleAlignmentCenter;
+        configuration.title = [NSString localization:@"empty_add_friend_button_title"];
+
+        self.btnEmptyAddFriend.configuration = configuration;
+    } else {
+        self.btnEmptyAddFriend.layer.cornerRadius = 20.0;
+        self.btnEmptyAddFriend.transform = CGAffineTransformMakeScale(-1.0, 1.0);
+        self.btnEmptyAddFriend.titleLabel.transform = CGAffineTransformMakeScale(-1.0, 1.0);
+        self.btnEmptyAddFriend.imageView.transform = CGAffineTransformMakeScale(-1.0, 1.0);
+    
+        UIEdgeInsets inset = self.btnEmptyAddFriend.imageEdgeInsets;
+        inset.left = -100;
+        self.btnEmptyAddFriend.imageEdgeInsets = inset;
+        [self.btnEmptyAddFriend setBackgroundImage:gradientImage forState:UIControlStateNormal];
+        [self.btnEmptyAddFriend setImage:[UIImage imageNamed:@"icon_add_friend"] forState:UIControlStateNormal];
+        [self.btnEmptyAddFriend setTitle:[NSString localization:@"empty_add_friend_button_title"] forState:UIControlStateNormal];
+    }
 }
 
 - (void)initTableView {
@@ -115,8 +150,6 @@
     
     self.tableViewList.allowsSelection = NO;
     [self.tableViewList registerNib:[UINib nibWithNibName:@"FriendListTableViewCell" bundle:nil] forCellReuseIdentifier:@"FriendListTableViewCell"];
-    
-    self.tableViewInvite.allowsSelection = NO;
     [self.tableViewInvite registerNib:[UINib nibWithNibName:@"InvitedTableViewCell" bundle:nil] forCellReuseIdentifier:@"InvitedTableViewCell"];
     
     [self setRefreshControl];
@@ -184,14 +217,50 @@
 - (IBAction)addFriendFunction:(UIButton *)sender {
 }
 
+- (void)agreeInviteFunction:(id)sender event:(id)event {
+    NSSet *touches = [event allTouches];
+    UITouch *touch = [touches anyObject];
+    CGPoint currentTouchPosition = [touch locationInView:self.tableViewInvite];
+    NSIndexPath *indexPath = [self.tableViewInvite indexPathForRowAtPoint:currentTouchPosition];
+    if (indexPath != nil) {
+        // TODO: 接受交友邀請
+    }
+}
+
+- (void)deleteInviteFunction:(id)sender event:(id)event {
+    NSSet *touches = [event allTouches];
+    UITouch *touch = [touches anyObject];
+    CGPoint currentTouchPosition = [touch locationInView:self.tableViewInvite];
+    NSIndexPath *indexPath = [self.tableViewInvite indexPathForRowAtPoint:currentTouchPosition];
+    if (indexPath != nil) {
+        // TODO: 刪除交友邀請
+    }
+}
+
+- (void)friendTransferFunction:(id)sender event:(id)event {
+    NSSet *touches = [event allTouches];
+    UITouch *touch = [touches anyObject];
+    CGPoint currentTouchPosition = [touch locationInView:self.tableViewList];
+    NSIndexPath *indexPath = [self.tableViewList indexPathForRowAtPoint:currentTouchPosition];
+    if (indexPath != nil) {
+        // TODO: 轉帳給好友
+    }
+}
+
+- (void)friendMoreFunction:(id)sender event:(id)event {
+    NSSet *touches = [event allTouches];
+    UITouch *touch = [touches anyObject];
+    CGPoint currentTouchPosition = [touch locationInView:self.tableViewList];
+    NSIndexPath *indexPath = [self.tableViewList indexPathForRowAtPoint:currentTouchPosition];
+    if (indexPath != nil) {
+        // TODO: 好友列表更多
+    }
+}
+
 
 #pragma mark - UITableView Function
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    if (tableView == self.tableViewInvite && self.inviteList.count > 1 && self.showInviteVisible) {
-        // 展開邀請列表
-        return 1;
-    }
     return 1;
 }
 
@@ -209,8 +278,12 @@
         }
     } else if (tableView == self.tableViewInvite) {
         // 邀請列表
-        if (self.inviteList && self.inviteList.count > 0) {
-            return self.inviteList.count;
+        if (self.inviteList) {
+            if (self.inviteList.count > 1 && !self.showInviteVisible) {
+                return 1;
+            } else {
+                return self.inviteList.count;
+            }
         }
     }
     
@@ -219,7 +292,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (tableView == self.tableViewInvite) {
-        return 70;
+        if (!self.showInviteVisible && self.inviteList && self.inviteList.count > 1) {
+            return 70 + 10;
+        } else {
+            return 70;
+        }
     }
     
     return 60;
@@ -250,11 +327,14 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    if (tableView == self.tableViewInvite) {
+        self.showInviteVisible = !self.showInviteVisible;
+        [self.tableViewInvite reloadData];
+    }
 }
 
 
-#pragma mark - UITableView Function
+#pragma mark - UISearchBar Delegate Function
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
     [UIView animateWithDuration:0.3 animations:^{
@@ -317,10 +397,19 @@
 }
 
 
+#pragma mark - UISearchBar Delegate Function
+
+/// HTML Label tapped Link function
+/// @param linkString a href link
+- (void)tappedLinkTextFunction:(NSURL *)linkString {
+    [[UIApplication sharedApplication] openURL:linkString options:@{} completionHandler:nil];
+}
+
+
 #pragma mark - Call API Function
 
+/// 取得此 User 的資料
 - (void)getUserData {
-    // 取得此 User 的資料
     [APIUtility apiConnectionByURL:@"https://dimanyen.github.io/man.json" completion:^(NSMutableDictionary * _Nonnull response, NSError * _Nonnull error) {
         if (response && response.count > 0) {
             NSArray *responseArray = [response objectForKey:@"response"];
@@ -340,7 +429,7 @@
     }];
 }
 
-/// 取的 User 的好友列表
+/// 取得 User 的好友列表
 - (void)getFriendListData:(NSString *)urlString {
     [APIUtility apiConnectionByURL:urlString completion:^(NSMutableDictionary * _Nonnull response, NSError * _Nonnull error) {
         if (response && response.count > 0) {
@@ -391,6 +480,7 @@
                 }
             }
             
+            /// 當為 friend1.json ，依需求需要整合 friend2.json 的列表
             if ([urlString isEqualToString:@"https://dimanyen.github.io/friend1.json"]) {
                 [self getFriendListData:@"https://dimanyen.github.io/friend2.json"];
             } else {
@@ -405,6 +495,8 @@
 
 #pragma mark - Private Function
 
+/// 更新現在選擇的好友或聊天按鈕下的橫條圖片
+/// @param button  Chat or Friend
 - (void)changeChatAndFriendListButtonStyle:(UIButton *)button {
     if (!self.ovilImage) {
         self.ovilImage = [UIImage createOvalImage:[UIColor colorNamed:@"AccentColor"] endColor:[UIColor colorNamed:@"AccentColor"] frame:self.btnFriend.frame];
@@ -423,6 +515,8 @@
     }
 }
 
+/// update Friend or Char List constraint and is hidden
+/// @param response Get Friend or Chat List API Response
 - (void)changeChatAndFriendListStyle:(NSMutableDictionary *)response {
     if (response && response.count > 0) {
         // 判斷是否顯示好友列表或顯示 EmptyView
@@ -466,6 +560,7 @@
     [self setBadgeView];
 }
 
+/// set searchbar
 - (void)setFriendListHeaderView {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableViewList.bounds.size.width, 60.0)];
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.tableViewList.frame.size.width * 0.8, 60)];
@@ -482,6 +577,7 @@
     self.tableViewList.tableHeaderView = view;
 }
 
+/// 設定通知小圓點
 - (void)setBadgeView {
     MKNumberBadgeView *numberBadge = [[MKNumberBadgeView alloc] initWithFrame:CGRectMake(self.btnChat.frame.size.width - 10, -10, 40, self.btnChat.frame.size.height)];
     numberBadge.value = @"99+";
@@ -515,6 +611,7 @@
     }
 }
 
+/// 設定好友列表的下拉更新
 - (void)setRefreshControl {
     UIRefreshControl *control = [[UIRefreshControl alloc] init];
     control.attributedTitle = [[NSAttributedString alloc] initWithString:[NSString localization:@"refresh_text"]];
@@ -531,7 +628,7 @@
     if (self.nowSelectedType == 0) {
         [self getFriendListData:self.userURLString];
     } else if (self.nowSelectedType == 1) {
-        // ... chat
+        // TODO: Chat Refresh Function
     }
 }
 
@@ -558,6 +655,9 @@
         cell.viewMoreSpace.hidden = NO;
     }
     
+    [cell.btnTransfer addTarget:self action:@selector(friendTransferFunction:event:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.btnMore addTarget:self action:@selector(friendMoreFunction:event:) forControlEvents:UIControlEventTouchUpInside];
+    
     return cell;
 }
 
@@ -568,10 +668,25 @@
     if (!cell) {
         cell = [[InvitedTableViewCell alloc] init];
     }
-    
     cell.labelUserName.text = model.userName;
     cell.labelContent.text = [NSString localization:@"label_invite_message"];
+    [cell.btnAgreeInvited addTarget:self action:@selector(agreeInviteFunction:event:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.btnDeleteInvited addTarget:self action:@selector(deleteInviteFunction:event:) forControlEvents:UIControlEventTouchUpInside];
     
+    if (!self.showInviteVisible && self.inviteList && self.inviteList.count > 1) {
+        cell.viewExpandable.hidden = NO;
+        cell.viewContent.layer.shadowPath = nil;
+    } else {
+        cell.viewExpandable.hidden = YES;
+        cell.viewExpandable.layer.shadowPath = nil;
+
+        UIEdgeInsets shadowInsets = UIEdgeInsetsMake(1.5f, 0, 1.5f, 0);
+        UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:UIEdgeInsetsInsetRect(cell.viewContent.bounds, shadowInsets)];
+        if (!cell.viewContent.layer.shadowPath) {
+            cell.viewContent.layer.shadowPath = shadowPath.CGPath;
+        }
+    }
+
     return cell;
 }
 
