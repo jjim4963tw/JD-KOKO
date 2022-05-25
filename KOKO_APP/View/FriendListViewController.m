@@ -150,8 +150,6 @@
     
     self.tableViewList.allowsSelection = NO;
     [self.tableViewList registerNib:[UINib nibWithNibName:@"FriendListTableViewCell" bundle:nil] forCellReuseIdentifier:@"FriendListTableViewCell"];
-    
-    self.tableViewInvite.allowsSelection = NO;
     [self.tableViewInvite registerNib:[UINib nibWithNibName:@"InvitedTableViewCell" bundle:nil] forCellReuseIdentifier:@"InvitedTableViewCell"];
     
     [self setRefreshControl];
@@ -263,10 +261,6 @@
 #pragma mark - UITableView Function
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    if (tableView == self.tableViewInvite && self.inviteList.count > 1 && self.showInviteVisible) {
-        // 展開邀請列表
-        return 1;
-    }
     return 1;
 }
 
@@ -284,8 +278,12 @@
         }
     } else if (tableView == self.tableViewInvite) {
         // 邀請列表
-        if (self.inviteList && self.inviteList.count > 0) {
-            return self.inviteList.count;
+        if (self.inviteList) {
+            if (self.inviteList.count > 1 && !self.showInviteVisible) {
+                return 1;
+            } else {
+                return self.inviteList.count;
+            }
         }
     }
     
@@ -294,7 +292,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (tableView == self.tableViewInvite) {
-        return 70;
+        if (!self.showInviteVisible && self.inviteList && self.inviteList.count > 1) {
+            return 70 + 10;
+        } else {
+            return 70;
+        }
     }
     
     return 60;
@@ -325,7 +327,10 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    if (tableView == self.tableViewInvite) {
+        self.showInviteVisible = !self.showInviteVisible;
+        [self.tableViewInvite reloadData];
+    }
 }
 
 
@@ -663,12 +668,25 @@
     if (!cell) {
         cell = [[InvitedTableViewCell alloc] init];
     }
-    
     cell.labelUserName.text = model.userName;
     cell.labelContent.text = [NSString localization:@"label_invite_message"];
     [cell.btnAgreeInvited addTarget:self action:@selector(agreeInviteFunction:event:) forControlEvents:UIControlEventTouchUpInside];
     [cell.btnDeleteInvited addTarget:self action:@selector(deleteInviteFunction:event:) forControlEvents:UIControlEventTouchUpInside];
     
+    if (!self.showInviteVisible && self.inviteList && self.inviteList.count > 1) {
+        cell.viewExpandable.hidden = NO;
+        cell.viewContent.layer.shadowPath = nil;
+    } else {
+        cell.viewExpandable.hidden = YES;
+        cell.viewExpandable.layer.shadowPath = nil;
+
+        UIEdgeInsets shadowInsets = UIEdgeInsetsMake(1.5f, 0, 1.5f, 0);
+        UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:UIEdgeInsetsInsetRect(cell.viewContent.bounds, shadowInsets)];
+        if (!cell.viewContent.layer.shadowPath) {
+            cell.viewContent.layer.shadowPath = shadowPath.CGPath;
+        }
+    }
+
     return cell;
 }
 
