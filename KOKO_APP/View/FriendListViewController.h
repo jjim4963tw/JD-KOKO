@@ -6,8 +6,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HTMLLabel.h"
 
-@interface FriendListViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
+@interface FriendListViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, HTMLLabelDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *labelUserName;
 @property (weak, nonatomic) IBOutlet UIButton *btnUserKOKOID;
@@ -24,7 +25,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelEmptyTitle;
 @property (weak, nonatomic) IBOutlet UILabel *labelEmptyContent;
 @property (weak, nonatomic) IBOutlet UIButton *btnEmptyAddFriend;
-@property (weak, nonatomic) IBOutlet UILabel *labelEmptySetupID;
+@property (weak, nonatomic) IBOutlet HTMLLabel *labelEmptySetupID;
 
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 

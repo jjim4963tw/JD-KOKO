@@ -92,6 +92,7 @@
 		38B324CB2837A7AB00597D12 /* icon_nav_atm@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 38B324C22837A7AB00597D12 /* icon_nav_atm@3x.png */; };
 		38B324CC2837A7AB00597D12 /* icon_nav_atm.png in Resources */ = {isa = PBXBuildFile; fileRef = 38B324C32837A7AB00597D12 /* icon_nav_atm.png */; };
 		38B324CD2837A7AB00597D12 /* icon_nav_scan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 38B324C42837A7AB00597D12 /* icon_nav_scan@3x.png */; };
+		38FA52EE283DD1D800978BBD /* HTMLLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 38FA52ED283DD1D800978BBD /* HTMLLabel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -229,6 +230,8 @@
 		38B324C22837A7AB00597D12 /* icon_nav_atm@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_nav_atm@3x.png"; sourceTree = "<group>"; };
 		38B324C32837A7AB00597D12 /* icon_nav_atm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_nav_atm.png; sourceTree = "<group>"; };
 		38B324C42837A7AB00597D12 /* icon_nav_scan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_nav_scan@3x.png"; sourceTree = "<group>"; };
+		38FA52EC283DD1D800978BBD /* HTMLLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLLabel.h; sourceTree = "<group>"; };
+		38FA52ED283DD1D800978BBD /* HTMLLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLLabel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -378,6 +381,8 @@
 				3862455C2838C4CF00961D63 /* FriendListTableViewCell.h */,
 				3862455D2838C4CF00961D63 /* FriendListTableViewCell.m */,
 				3862455E2838C4CF00961D63 /* FriendListTableViewCell.xib */,
+				38FA52EC283DD1D800978BBD /* HTMLLabel.h */,
+				38FA52ED283DD1D800978BBD /* HTMLLabel.m */,
 				386245732838EA5D00961D63 /* InvitedTableViewCell.h */,
 				386245742838EA5D00961D63 /* InvitedTableViewCell.m */,
 				386245752838EA5D00961D63 /* InvitedTableViewCell.xib */,
@@ -708,6 +713,7 @@
 				38304BE428376B5B008D8DF5 /* main.m in Sources */,
 				3862455F2838C4CF00961D63 /* FriendListTableViewCell.m in Sources */,
 				386245762838EA5D00961D63 /* InvitedTableViewCell.m in Sources */,
+				38FA52EE283DD1D800978BBD /* HTMLLabel.m in Sources */,
 				388663DE2837E96C00E320E2 /* AFHTTPSessionManager.m in Sources */,
 				38304BD628376B5A008D8DF5 /* SceneDelegate.m in Sources */,
 				38B3248828378A2900597D12 /* KOKOIndexViewController.m in Sources */,

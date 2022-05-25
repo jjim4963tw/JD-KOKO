@@ -65,8 +65,8 @@
     self.labelEmptyTitle.text = [NSString localization:@"empty_title"];
     self.labelEmptyContent.text = [NSString localization:@"empty_content"];
     
-    NSAttributedString *attrStr = [[NSAttributedString alloc] initWithData:[[NSString localization:@"empty_setup_id"] dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType} documentAttributes:nil error:nil];
-    self.labelEmptySetupID.attributedText = attrStr;
+    [self.labelEmptySetupID setHTMLText:[NSString localization:@"empty_setup_id"]];
+    self.labelEmptySetupID.linkDelegate = self;
 
     [self.tableViewInvite setHidden:YES];
     [self.tableViewList setHidden:NO];
@@ -317,6 +317,15 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [self.searchBar resignFirstResponder];
+}
+
+
+#pragma mark - UISearchBar Delegate Function
+
+/// HTML Label tapped Link function
+/// @param linkString a href link
+- (void)tappedLinkTextFunction:(NSURL *)linkString {
+    [[UIApplication sharedApplication] openURL:linkString options:@{} completionHandler:nil];
 }
 
 
