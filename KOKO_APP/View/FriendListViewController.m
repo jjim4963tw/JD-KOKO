@@ -219,6 +219,46 @@
 - (IBAction)addFriendFunction:(UIButton *)sender {
 }
 
+- (void)agreeInviteFunction:(id)sender event:(id)event {
+    NSSet *touches = [event allTouches];
+    UITouch *touch = [touches anyObject];
+    CGPoint currentTouchPosition = [touch locationInView:self.tableViewInvite];
+    NSIndexPath *indexPath = [self.tableViewInvite indexPathForRowAtPoint:currentTouchPosition];
+    if (indexPath != nil) {
+        // TODO: 接受交友邀請
+    }
+}
+
+- (void)deleteInviteFunction:(id)sender event:(id)event {
+    NSSet *touches = [event allTouches];
+    UITouch *touch = [touches anyObject];
+    CGPoint currentTouchPosition = [touch locationInView:self.tableViewInvite];
+    NSIndexPath *indexPath = [self.tableViewInvite indexPathForRowAtPoint:currentTouchPosition];
+    if (indexPath != nil) {
+        // TODO: 刪除交友邀請
+    }
+}
+
+- (void)friendTransferFunction:(id)sender event:(id)event {
+    NSSet *touches = [event allTouches];
+    UITouch *touch = [touches anyObject];
+    CGPoint currentTouchPosition = [touch locationInView:self.tableViewList];
+    NSIndexPath *indexPath = [self.tableViewList indexPathForRowAtPoint:currentTouchPosition];
+    if (indexPath != nil) {
+        // TODO: 轉帳給好友
+    }
+}
+
+- (void)friendMoreFunction:(id)sender event:(id)event {
+    NSSet *touches = [event allTouches];
+    UITouch *touch = [touches anyObject];
+    CGPoint currentTouchPosition = [touch locationInView:self.tableViewList];
+    NSIndexPath *indexPath = [self.tableViewList indexPathForRowAtPoint:currentTouchPosition];
+    if (indexPath != nil) {
+        // TODO: 好友列表更多
+    }
+}
+
 
 #pragma mark - UITableView Function
 
@@ -610,6 +650,9 @@
         cell.viewMoreSpace.hidden = NO;
     }
     
+    [cell.btnTransfer addTarget:self action:@selector(friendTransferFunction:event:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.btnMore addTarget:self action:@selector(friendMoreFunction:event:) forControlEvents:UIControlEventTouchUpInside];
+    
     return cell;
 }
 
@@ -623,6 +666,8 @@
     
     cell.labelUserName.text = model.userName;
     cell.labelContent.text = [NSString localization:@"label_invite_message"];
+    [cell.btnAgreeInvited addTarget:self action:@selector(agreeInviteFunction:event:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.btnDeleteInvited addTarget:self action:@selector(deleteInviteFunction:event:) forControlEvents:UIControlEventTouchUpInside];
     
     return cell;
 }
