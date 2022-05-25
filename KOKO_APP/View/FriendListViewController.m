@@ -74,6 +74,9 @@
     
     // 當未有好友邀請時，將好友列表上移。
     self.constraintBtnFriendTop.constant = self.btnFriendTopConstant - self.tableViewInvite.frame.size.height - 6;
+    
+    self.ovilImage = [UIImage createOvalImage:[UIColor colorNamed:@"AccentColor"] endColor:[UIColor colorNamed:@"AccentColor"] frame:self.btnFriend.frame];
+    self.clearImage = [UIImage createOvalImage:[UIColor clearColor] endColor:[UIColor clearColor] frame:self.btnFriend.frame];
 
     [self initButton];
     [self changeChatAndFriendListButtonStyle:self.btnFriend];
@@ -85,29 +88,58 @@
 - (void)initButton {
     [self.btnUserKOKOID setTitle:[NSString localization:@"koko_id_setting"] forState:UIControlStateNormal];
 
-    UIButtonConfiguration *configuration = [UIButtonConfiguration filledButtonConfiguration];
-    configuration.background.backgroundColor = UIColor.clearColor;
-    configuration.titleAlignment = UIButtonConfigurationTitleAlignmentCenter;
-    configuration.imagePadding = 5.0;
-    configuration.imagePlacement = NSDirectionalRectEdgeBottom;
-    self.btnFriend.configuration = configuration;
-    self.btnChat.configuration = configuration;
-        
     [self.btnFriend setImage:self.ovilImage forState:UIControlStateNormal];
     [self.btnFriend setTitle:[NSString localization:@"button_friends"] forState:UIControlStateNormal];
+    [self.btnChat setImage:self.clearImage forState:UIControlStateNormal];
     [self.btnChat setTitle:[NSString localization:@"button_chats"] forState:UIControlStateNormal];
-    
+
     // iOS 15 改用此方法設定 style
+    if (@available(iOS 15.0, *)) {
+        UIButtonConfiguration *configuration = [UIButtonConfiguration filledButtonConfiguration];
+        configuration.background.backgroundColor = UIColor.clearColor;
+        configuration.titleAlignment = UIButtonConfigurationTitleAlignmentCenter;
+        configuration.imagePadding = 5.0;
+        configuration.imagePlacement = NSDirectionalRectEdgeBottom;
+        self.btnFriend.configuration = configuration;
+        self.btnChat.configuration = configuration;
+    } else {
+        CGSize imageViewSize = self.btnFriend.imageView.frame.size;
+        self.btnFriend.titleEdgeInsets = UIEdgeInsetsMake(-(imageViewSize.height + 5), -imageViewSize.width, 0, 0);
+        CGSize textSize = [[NSString localization:@"button_friends"] sizeWithAttributes:@{NSFontAttributeName: self.btnFriend.titleLabel.font}];
+        self.btnFriend.imageEdgeInsets = UIEdgeInsetsMake((textSize.height + 5), 0, 0, -textSize.width);
+        self.btnFriend.contentEdgeInsets = UIEdgeInsetsMake(imageViewSize.height, 0, imageViewSize.height, 0);
+        
+        imageViewSize = self.btnChat.imageView.frame.size;
+        self.btnChat.titleEdgeInsets = UIEdgeInsetsMake(-(imageViewSize.height + 5), -imageViewSize.width, 0, 0);
+        textSize = [[NSString localization:@"button_chats"] sizeWithAttributes:@{NSFontAttributeName: self.btnChat.titleLabel.font}];
+        self.btnChat.imageEdgeInsets = UIEdgeInsetsMake((textSize.height + 5), 0, 0, -textSize.width);
+        self.btnChat.contentEdgeInsets = UIEdgeInsetsMake(imageViewSize.height, 0, imageViewSize.height, 0);
+    }
+
     UIImage *gradientImage = [UIImage convertGradientToImage:[UIColor colorWithRed: 0.34 green: 0.70 blue: 0.04 alpha: 1.00] endColor:[UIColor colorWithRed: 0.65 green: 0.80 blue: 0.26 alpha: 1.00] frame:self.btnEmptyAddFriend.frame];
-    configuration = [UIButtonConfiguration filledButtonConfiguration];
-    configuration.background.image = gradientImage;
-    configuration.background.cornerRadius = 20.0;
-    configuration.image = [UIImage imageNamed:@"icon_add_friend"];
-    configuration.imagePlacement = NSDirectionalRectEdgeTrailing;
-    configuration.titleAlignment = UIButtonConfigurationTitleAlignmentCenter;
-    configuration.title = [NSString localization:@"empty_add_friend_button_title"];
+    if (@available(iOS 15.0, *)) {
+        UIButtonConfiguration *configuration = [UIButtonConfiguration filledButtonConfiguration];
+        configuration.background.image = gradientImage;
+        configuration.background.cornerRadius = 20.0;
+        configuration.image = [UIImage imageNamed:@"icon_add_friend"];
+        configuration.imagePlacement = NSDirectionalRectEdgeTrailing;
+        configuration.titleAlignment = UIButtonConfigurationTitleAlignmentCenter;
+        configuration.title = [NSString localization:@"empty_add_friend_button_title"];
+
+        self.btnEmptyAddFriend.configuration = configuration;
+    } else {
+        self.btnEmptyAddFriend.layer.cornerRadius = 20.0;
+        self.btnEmptyAddFriend.transform = CGAffineTransformMakeScale(-1.0, 1.0);
+        self.btnEmptyAddFriend.titleLabel.transform = CGAffineTransformMakeScale(-1.0, 1.0);
+        self.btnEmptyAddFriend.imageView.transform = CGAffineTransformMakeScale(-1.0, 1.0);
     
-    self.btnEmptyAddFriend.configuration = configuration;
+        UIEdgeInsets inset = self.btnEmptyAddFriend.imageEdgeInsets;
+        inset.left = -100;
+        self.btnEmptyAddFriend.imageEdgeInsets = inset;
+        [self.btnEmptyAddFriend setBackgroundImage:gradientImage forState:UIControlStateNormal];
+        [self.btnEmptyAddFriend setImage:[UIImage imageNamed:@"icon_add_friend"] forState:UIControlStateNormal];
+        [self.btnEmptyAddFriend setTitle:[NSString localization:@"empty_add_friend_button_title"] forState:UIControlStateNormal];
+    }
 }
 
 - (void)initTableView {
