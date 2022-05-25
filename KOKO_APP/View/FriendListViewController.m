@@ -61,33 +61,6 @@
     self.imageViewSetID.layer.cornerRadius = self.imageViewSetID.frame.size.width / 2;
     self.imageViewSetID.layer.masksToBounds = YES;
     self.imageViewSetID.hidden = NO;
-
-    [self.btnUserKOKOID setTitle:[NSString localization:@"koko_id_setting"] forState:UIControlStateNormal];
-
-    UIButtonConfiguration *configuration = [UIButtonConfiguration filledButtonConfiguration];
-    configuration.background.backgroundColor = UIColor.clearColor;
-    configuration.titleAlignment = UIButtonConfigurationTitleAlignmentCenter;
-    configuration.imagePadding = 5.0;
-    configuration.imagePlacement = NSDirectionalRectEdgeBottom;
-    self.btnFriend.configuration = configuration;
-    self.btnChat.configuration = configuration;
-        
-    [self.btnFriend setImage:self.ovilImage forState:UIControlStateNormal];
-    [self.btnFriend setTitle:[NSString localization:@"button_friends"] forState:UIControlStateNormal];
-    [self.btnChat setTitle:[NSString localization:@"button_chats"] forState:UIControlStateNormal];
-    
-    [self changeChatAndFriendListButtonStyle:self.btnFriend];
-    
-    // iOS 15 改用此方法設定 style
-    UIImage *gradientImage = [UIImage convertGradientToImage:[UIColor colorWithRed: 0.34 green: 0.70 blue: 0.04 alpha: 1.00] endColor:[UIColor colorWithRed: 0.65 green: 0.80 blue: 0.26 alpha: 1.00] frame:self.btnEmptyAddFriend.frame];
-    configuration = [UIButtonConfiguration filledButtonConfiguration];
-    configuration.background.image = gradientImage;
-    configuration.background.cornerRadius = 20.0;
-    configuration.image = [UIImage imageNamed:@"icon_add_friend"];
-    configuration.imagePlacement = NSDirectionalRectEdgeTrailing;
-    configuration.titleAlignment = UIButtonConfigurationTitleAlignmentCenter;
-    configuration.title = [NSString localization:@"empty_add_friend_button_title"];
-    self.btnEmptyAddFriend.configuration = configuration;
     
     self.labelEmptyTitle.text = [NSString localization:@"empty_title"];
     self.labelEmptyContent.text = [NSString localization:@"empty_content"];
@@ -102,9 +75,39 @@
     // 當未有好友邀請時，將好友列表上移。
     self.constraintBtnFriendTop.constant = self.btnFriendTopConstant - self.tableViewInvite.frame.size.height - 6;
 
+    [self initButton];
+    [self changeChatAndFriendListButtonStyle:self.btnFriend];
     [self initTableView];
     [self setFriendListHeaderView];
     [self setBadgeView];
+}
+
+- (void)initButton {
+    [self.btnUserKOKOID setTitle:[NSString localization:@"koko_id_setting"] forState:UIControlStateNormal];
+
+    UIButtonConfiguration *configuration = [UIButtonConfiguration filledButtonConfiguration];
+    configuration.background.backgroundColor = UIColor.clearColor;
+    configuration.titleAlignment = UIButtonConfigurationTitleAlignmentCenter;
+    configuration.imagePadding = 5.0;
+    configuration.imagePlacement = NSDirectionalRectEdgeBottom;
+    self.btnFriend.configuration = configuration;
+    self.btnChat.configuration = configuration;
+        
+    [self.btnFriend setImage:self.ovilImage forState:UIControlStateNormal];
+    [self.btnFriend setTitle:[NSString localization:@"button_friends"] forState:UIControlStateNormal];
+    [self.btnChat setTitle:[NSString localization:@"button_chats"] forState:UIControlStateNormal];
+    
+    // iOS 15 改用此方法設定 style
+    UIImage *gradientImage = [UIImage convertGradientToImage:[UIColor colorWithRed: 0.34 green: 0.70 blue: 0.04 alpha: 1.00] endColor:[UIColor colorWithRed: 0.65 green: 0.80 blue: 0.26 alpha: 1.00] frame:self.btnEmptyAddFriend.frame];
+    configuration = [UIButtonConfiguration filledButtonConfiguration];
+    configuration.background.image = gradientImage;
+    configuration.background.cornerRadius = 20.0;
+    configuration.image = [UIImage imageNamed:@"icon_add_friend"];
+    configuration.imagePlacement = NSDirectionalRectEdgeTrailing;
+    configuration.titleAlignment = UIButtonConfigurationTitleAlignmentCenter;
+    configuration.title = [NSString localization:@"empty_add_friend_button_title"];
+    
+    self.btnEmptyAddFriend.configuration = configuration;
 }
 
 - (void)initTableView {
@@ -254,7 +257,7 @@
 }
 
 
-#pragma mark - UITableView Function
+#pragma mark - UISearchBar Delegate Function
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
     [UIView animateWithDuration:0.3 animations:^{
@@ -319,8 +322,8 @@
 
 #pragma mark - Call API Function
 
+/// 取得此 User 的資料
 - (void)getUserData {
-    // 取得此 User 的資料
     [APIUtility apiConnectionByURL:@"https://dimanyen.github.io/man.json" completion:^(NSMutableDictionary * _Nonnull response, NSError * _Nonnull error) {
         if (response && response.count > 0) {
             NSArray *responseArray = [response objectForKey:@"response"];
@@ -340,7 +343,7 @@
     }];
 }
 
-/// 取的 User 的好友列表
+/// 取得 User 的好友列表
 - (void)getFriendListData:(NSString *)urlString {
     [APIUtility apiConnectionByURL:urlString completion:^(NSMutableDictionary * _Nonnull response, NSError * _Nonnull error) {
         if (response && response.count > 0) {
@@ -391,6 +394,7 @@
                 }
             }
             
+            /// 當為 friend1.json ，依需求需要整合 friend2.json 的列表
             if ([urlString isEqualToString:@"https://dimanyen.github.io/friend1.json"]) {
                 [self getFriendListData:@"https://dimanyen.github.io/friend2.json"];
             } else {
@@ -405,6 +409,8 @@
 
 #pragma mark - Private Function
 
+/// 更新現在選擇的好友或聊天按鈕下的橫條圖片
+/// @param button  Chat or Friend
 - (void)changeChatAndFriendListButtonStyle:(UIButton *)button {
     if (!self.ovilImage) {
         self.ovilImage = [UIImage createOvalImage:[UIColor colorNamed:@"AccentColor"] endColor:[UIColor colorNamed:@"AccentColor"] frame:self.btnFriend.frame];
@@ -423,6 +429,8 @@
     }
 }
 
+/// update Friend or Char List constraint and is hidden
+/// @param response Get Friend or Chat List API Response
 - (void)changeChatAndFriendListStyle:(NSMutableDictionary *)response {
     if (response && response.count > 0) {
         // 判斷是否顯示好友列表或顯示 EmptyView
@@ -466,6 +474,7 @@
     [self setBadgeView];
 }
 
+/// set searchbar
 - (void)setFriendListHeaderView {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableViewList.bounds.size.width, 60.0)];
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.tableViewList.frame.size.width * 0.8, 60)];
@@ -482,6 +491,7 @@
     self.tableViewList.tableHeaderView = view;
 }
 
+/// 設定通知小圓點
 - (void)setBadgeView {
     MKNumberBadgeView *numberBadge = [[MKNumberBadgeView alloc] initWithFrame:CGRectMake(self.btnChat.frame.size.width - 10, -10, 40, self.btnChat.frame.size.height)];
     numberBadge.value = @"99+";
@@ -515,6 +525,7 @@
     }
 }
 
+/// 設定好友列表的下拉更新
 - (void)setRefreshControl {
     UIRefreshControl *control = [[UIRefreshControl alloc] init];
     control.attributedTitle = [[NSAttributedString alloc] initWithString:[NSString localization:@"refresh_text"]];
@@ -531,7 +542,7 @@
     if (self.nowSelectedType == 0) {
         [self getFriendListData:self.userURLString];
     } else if (self.nowSelectedType == 1) {
-        // ... chat
+        // TODO: Chat Refresh Function
     }
 }
 
