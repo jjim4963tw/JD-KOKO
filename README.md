@@ -8,7 +8,7 @@
 
 ## Requirements
 
-iOS 15 up
+iOS 13 up
 
 <br>
 
